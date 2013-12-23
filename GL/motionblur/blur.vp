@@ -1,0 +1,12 @@
+#version 120
+
+uniform mat4	mvpMatrix;
+attribute vec4 vVertex;
+attribute vec2 vTexCoord;
+varying vec2 vUV;
+
+void main(void) 
+{ 
+  vUV = vTexCoord;
+  gl_Position = mvpMatrix * vVertex;
+}
