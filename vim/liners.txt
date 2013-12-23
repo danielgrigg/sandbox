@@ -1,0 +1,2 @@
+:helptags ~/.vim/doc # rebuild tags unix
+:helptags ~/vimfiles/doc # rebuild tags windows

@@ -1,0 +1,3 @@
+dscacheutil -q group # query groups
+dscacheutil -q user # query users
+nm foo.dylib # library symbols

@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.6)
+project(my_lib)
+set(SOURCES)
+set(SOURCES ${SOURCES} src/jna_so.cpp)
+set(SOURCES ${SOURCES} src/jna_so.h)
+source_group(src FILES src/jna_so.cpp src/jna_so.h)
+add_library(my_lib SHARED ${SOURCES})
+install (TARGETS my_lib DESTINATION lib)
+
+install (FILES src/jna_so.h DESTINATION include/my_lib)
