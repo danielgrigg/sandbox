@@ -1,0 +1,7 @@
+Make with:
+cmake . && Make
+
+Example
+
+find /Library/Fonts -name *.ttf -exec ./tutorial1 {} \;
+
