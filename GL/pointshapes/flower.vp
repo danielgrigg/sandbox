@@ -1,0 +1,23 @@
+#version 120
+
+// Transformation Matrix
+uniform mat4	mvMatrix;
+uniform mat4	mvpMatrix;
+uniform float uTime;
+
+// Incoming per vertex
+attribute vec4 vVertex;
+attribute vec4 vColor;
+varying vec4 vVaryingColor;
+varying mat2 rotation;
+
+void main(void) 
+{ 
+  vVaryingColor = vColor;
+  gl_PointSize = 300.0;
+
+  float sinTheta = sin(vColor.r * uTime);
+  float cosTheta = cos(vColor.r * uTime);
+  rotation = mat2(cosTheta, sinTheta, -sinTheta, cosTheta);
+  gl_Position = mvpMatrix * vVertex;
+}
