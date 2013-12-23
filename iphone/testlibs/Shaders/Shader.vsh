@@ -1,0 +1,22 @@
+//
+//  Shader.vsh
+//  testlibs
+//
+//  Created by Daniel Grigg on 6/02/11.
+//  Copyright (c) 2011 Daniel Grigg. All rights reserved.
+//
+
+attribute vec4 position;
+attribute vec4 color;
+
+varying vec4 colorVarying;
+
+uniform float translate;
+
+void main()
+{
+    gl_Position = position;
+    gl_Position.y += sin(translate) / 2.0;
+
+    colorVarying = color;
+}

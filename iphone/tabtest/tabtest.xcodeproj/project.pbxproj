@@ -1,0 +1,273 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65BC724B1524686600657C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC724A1524686600657C37 /* UIKit.framework */; };
+		65BC724D1524686600657C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC724C1524686600657C37 /* Foundation.framework */; };
+		65BC724F1524686600657C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC724E1524686600657C37 /* CoreGraphics.framework */; };
+		65BC72551524686600657C37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65BC72531524686600657C37 /* InfoPlist.strings */; };
+		65BC72571524686600657C37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BC72561524686600657C37 /* main.m */; };
+		65BC725B1524686600657C37 /* tabtestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BC725A1524686600657C37 /* tabtestAppDelegate.m */; };
+		65BC725E1524686600657C37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65BC725C1524686600657C37 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65BC72461524686600657C37 /* tabtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tabtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BC724A1524686600657C37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		65BC724C1524686600657C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		65BC724E1524686600657C37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		65BC72521524686600657C37 /* tabtest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tabtest-Info.plist"; sourceTree = "<group>"; };
+		65BC72541524686600657C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		65BC72561524686600657C37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		65BC72581524686600657C37 /* tabtest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tabtest-Prefix.pch"; sourceTree = "<group>"; };
+		65BC72591524686600657C37 /* tabtestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tabtestAppDelegate.h; sourceTree = "<group>"; };
+		65BC725A1524686600657C37 /* tabtestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tabtestAppDelegate.m; sourceTree = "<group>"; };
+		65BC725D1524686600657C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65BC72431524686600657C37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC724B1524686600657C37 /* UIKit.framework in Frameworks */,
+				65BC724D1524686600657C37 /* Foundation.framework in Frameworks */,
+				65BC724F1524686600657C37 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65BC723B1524686600657C37 = {
+			isa = PBXGroup;
+			children = (
+				65BC72501524686600657C37 /* tabtest */,
+				65BC72491524686600657C37 /* Frameworks */,
+				65BC72471524686600657C37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65BC72471524686600657C37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65BC72461524686600657C37 /* tabtest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65BC72491524686600657C37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65BC724A1524686600657C37 /* UIKit.framework */,
+				65BC724C1524686600657C37 /* Foundation.framework */,
+				65BC724E1524686600657C37 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65BC72501524686600657C37 /* tabtest */ = {
+			isa = PBXGroup;
+			children = (
+				65BC72591524686600657C37 /* tabtestAppDelegate.h */,
+				65BC725A1524686600657C37 /* tabtestAppDelegate.m */,
+				65BC725C1524686600657C37 /* MainWindow.xib */,
+				65BC72511524686600657C37 /* Supporting Files */,
+			);
+			path = tabtest;
+			sourceTree = "<group>";
+		};
+		65BC72511524686600657C37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				65BC72521524686600657C37 /* tabtest-Info.plist */,
+				65BC72531524686600657C37 /* InfoPlist.strings */,
+				65BC72561524686600657C37 /* main.m */,
+				65BC72581524686600657C37 /* tabtest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65BC72451524686600657C37 /* tabtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BC72611524686600657C37 /* Build configuration list for PBXNativeTarget "tabtest" */;
+			buildPhases = (
+				65BC72421524686600657C37 /* Sources */,
+				65BC72431524686600657C37 /* Frameworks */,
+				65BC72441524686600657C37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tabtest;
+			productName = tabtest;
+			productReference = 65BC72461524686600657C37 /* tabtest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65BC723D1524686600657C37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Daniel Grigg";
+			};
+			buildConfigurationList = 65BC72401524686600657C37 /* Build configuration list for PBXProject "tabtest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 65BC723B1524686600657C37;
+			productRefGroup = 65BC72471524686600657C37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65BC72451524686600657C37 /* tabtest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65BC72441524686600657C37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC72551524686600657C37 /* InfoPlist.strings in Resources */,
+				65BC725E1524686600657C37 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65BC72421524686600657C37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC72571524686600657C37 /* main.m in Sources */,
+				65BC725B1524686600657C37 /* tabtestAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		65BC72531524686600657C37 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65BC72541524686600657C37 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		65BC725C1524686600657C37 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65BC725D1524686600657C37 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		65BC725F1524686600657C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		65BC72601524686600657C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65BC72621524686600657C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tabtest/tabtest-Prefix.pch";
+				INFOPLIST_FILE = "tabtest/tabtest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		65BC72631524686600657C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tabtest/tabtest-Prefix.pch";
+				INFOPLIST_FILE = "tabtest/tabtest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65BC72401524686600657C37 /* Build configuration list for PBXProject "tabtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BC725F1524686600657C37 /* Debug */,
+				65BC72601524686600657C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65BC72611524686600657C37 /* Build configuration list for PBXNativeTarget "tabtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BC72621524686600657C37 /* Debug */,
+				65BC72631524686600657C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65BC723D1524686600657C37 /* Project object */;
+}
