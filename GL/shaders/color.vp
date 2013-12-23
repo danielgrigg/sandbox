@@ -1,0 +1,17 @@
+#version 120
+
+// Transformation Matrix
+uniform mat4	mvMatrix;
+uniform mat4	mvpMatrix;
+uniform float uTime;
+
+// Incoming per vertex
+attribute vec4 vVertex;
+varying vec4 vVaryingColor;
+
+void main(void) 
+{ 
+  vVaryingColor = vec4(1,0,0,1);
+
+  gl_Position = mvpMatrix * vVertex;
+}
