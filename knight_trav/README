@@ -1,0 +1,103 @@
+KNIGHT_TRAV - An implementation of the Knight's Travail problem.
+================================================================
+
+
+Introduction
+=============
+
+This repository contains a full solution to the knight's travail problem
+posited by Integrated Research.  
+
+
+Repository Contents
+===================
+
+ - Build scripts
+ - Source code (all standard C++ 2003, STL and Boost)
+ - Unit tests (downloads GoogleTest automatically)
+ - Documentation
+
+
+The Documentation folder contains discussion of pros/cons of the chosen solution
+and an overview of the software and its design.
+
+
+Prerequisites
+============
+
+This version of knight_trav currently only builds on 'nix systems.  It's been
+tested on Mac OS X 10.8 and Ubuntu 12.04.  However the program uses only standard C++, STL 
+and Boost, thus combined with the use of cmake means it should also function on 
+Windows with a suitable bootstrap script (not provided at this time).
+
+ - 'nix (Ubuntu, Mac OS X verified)
+ - Boost (tested on 1.46, 1.50)
+ - Command line tools (on Mac OS X 10.8)
+ - cmake 2.8+
+ - git (not essential but recommended)
+
+
+ Installing Prequisites 
+ =====================
+
+ Ubuntu
+ ======
+
+ sudo apt-get install git cmake libboost-all-dev
+
+ Mac OS X
+ ========
+
+ Using MacPorts (http://www.macports.org/install.php):
+
+ sudo port install git-core cmake boost
+
+ Install XCode developer tools from Apple's App store (wish I had a port for that!)
+ Update XCode (via Preferences) to install Command Line Tools.
+
+
+ Installing
+ =====
+
+ Assuming you've received the repository as a tgz, first extract it:
+
+ tar xzf knight_travail.tgz
+
+ 1. Run bootstrap 
+
+    cd knight_travail
+    ./bootstrap.sh
+ 
+    This will initialize the build system.
+ 
+ 2. Build knight_travail and unit tests: 
+
+    cd Build
+    make
+
+ 3. Run the unit-tests
+    ./unittest-all
+
+
+Usage
+======
+
+From the Build directory, run knight_travail with the help option.
+
+./knight_travail --help
+
+A typical usage example would be,
+
+./knight_travail
+$ A5 G5
+$ B3 C5 E6 G5
+
+Invalid input will generate an error message.
+
+
+Credits
+=======
+
+Renaissance Man: Daniel Grigg :)
+
+

@@ -1,0 +1,15 @@
+*** CMakeLists.txt.orig	2011-07-13 20:37:31.000000000 +1000
+--- CMakeLists.txt	2011-07-13 20:42:12.000000000 +1000
+***************
+*** 238,240 ****
+--- 238,247 ----
+    cxx_executable(gtest_xml_output_unittest_ test gtest)
+    py_test(gtest_xml_output_unittest)
+  endif()
++ 
++ install(TARGETS gtest gtest_main
++         ARCHIVE DESTINATION lib
++         LIBRARY DESTINATION lib)
++ install(DIRECTORY include/ DESTINATION include
++         FILES_MATCHING PATTERN "*.h")
++ 
