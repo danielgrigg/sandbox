@@ -1,0 +1,4 @@
+ruby -ne 'puts $1 if $_=~/= (\d+)/'
+
+# extract fields 
+ruby -ne 'puts "#{$_.split()[1]}, #{$_.split()[2]}"' 

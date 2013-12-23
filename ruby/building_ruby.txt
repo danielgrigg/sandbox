@@ -1,0 +1,6 @@
+patch -p1 
+
+ARCHFLAGS="-arch i386"  CFLAGS="-arch i386" LDFLAGS="-arch i386" ./configure  --with-arch=i386
+./configure --prefix=/opt/local --enabled-shared --enable-wide-getaddrinfo
+
+ARCHFLAGS="-arch i386" CFLAGS="-arch i386" LDFLAGS="-arch i386" ./configure --prefix=/opt/local --with-arch=i386 --enable-shared --enable-wide-getaddrinfo
