@@ -1,0 +1,8 @@
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build/
+*.o
+*.swp
+*.un~
+.svn/
