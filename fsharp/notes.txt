@@ -1,0 +1,7 @@
+building on x86_64:
+
+export AS="as -arch i386"
+export CC="cc -arch i386"
+Run without --static option. Just run mkbuild BINARY. With the option --deps, it seems to embed more dlls. You can use -z option to zip the embedded libraries.
+
+
