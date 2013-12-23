@@ -1,0 +1,1 @@
+-Wall -ansi -Werror -W -Wmissing-prototypes -Wconversion -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -fshort-enums -fno-common
