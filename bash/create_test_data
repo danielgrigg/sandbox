@@ -1,0 +1,8 @@
+#!/bin/bash
+
+nitems=${1:-2}
+outdir=${2:-/tmp}
+for ((n=1;n<=$nitems;n++)); do
+  dd if=/dev/random of=$outdir/test_$((8*2**$n))MB.dat bs=8192 count=$((1024*2**$n))
+  echo "created test_$((8*2**$n)).dat"
+done
