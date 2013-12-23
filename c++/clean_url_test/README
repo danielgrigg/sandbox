@@ -1,0 +1,29 @@
+Introduction
+============
+
+clean_url_test runs a test-suite against the clean_url function.
+
+Prequisities
+============
+
+cmake 2.6+
+
+I use cmake instead of a makefile because frankly, who would use a makefile these days??
+
+Usage
+=====
+
+1. Build the app (assuming makefiles are default for cmake)
+  
+  cmake .
+  make
+
+2. Run it
+
+  ./clean_url_test
+
+3. Watch the beautiful lines of test output emerge.
+
+4. Don't judge too harsly for a few hours work :(
+
+

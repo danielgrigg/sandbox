@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.6)
+set(PROJ constexpr)
+set(CMAKE_INSTALL_PREFIX ".." CACHE PATH "${PROJ} install prefix" FORCE)
+project(${PROJ})
+set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
+add_definitions( -DBOOST_ALL_NO_LIB )
+include_directories(.)
+set(SOURCES)
+set(SOURCES ${SOURCES} ${PROJ}.cpp)
+add_executable(${PROJ} ${SOURCES})
+#target_link_libraries(${PROJ} general boost_system) # optimized debug
+install (TARGETS ${PROJ} DESTINATION bin)

@@ -1,0 +1,10 @@
+digraph transition_table {
+Fill -> Return [label=f]};
+Fill -> Look [label=f]};
+Return -> Swing [label=f]};
+Return -> Fill [label=f]};
+Swing -> Look [label=f]};
+Swing -> Return [label=f]};
+Look -> Fill [label=f]};
+Look -> Swing [label=f]};
+}

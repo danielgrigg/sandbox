@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 2.8)
+set(PROJ tuples)
+set(CMAKE_INSTALL_PREFIX ".." CACHE PATH "${PROJ} install prefix" FORCE)
+project(${PROJ})
+set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
+include_directories(.)
+set(SOURCES)
+set(SOURCES ${SOURCES} ${PROJ}.cpp)
+add_executable(${PROJ} ${SOURCES})
+install (TARGETS ${PROJ} DESTINATION bin)
+

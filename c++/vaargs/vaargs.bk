@@ -1,0 +1,46 @@
+/*
+// Note types like 'short' and 'float' aren't supported, so always promote up.
+void PrintIntDoubleIntDouble(int amount, ...)
+{
+  int a;
+  double b;
+  int c;
+  double d;
+  va_list vl;
+  va_start(vl, amount);
+  a = va_arg(vl,int);
+  b = va_arg(vl, double);
+  c = va_arg(vl, int);
+  d = va_arg(vl, double);
+  va_end(vl);
+
+  cout << "a: " << a
+       << " b: " << b
+       << " c: " << c
+       << " d: " << d
+       << endl;
+}
+
+int main ()
+{
+  PrintIntDoubleIntDouble(4, 21,0,0,0);
+  PrintIntDoubleIntDouble(4, 23, 3.14159, 42, 2.71828183);
+  return 0;
+}
+
+*/
+
+int Foo(int l, ...)
+{
+  va_list vl;
+  va_start(vl, l);
+  int a = va_arg(vl, int);
+  va_end(vl);
+  return a;
+}
+
+int main()
+{
+  return Foo(1, 42);
+}
+

@@ -1,0 +1,13 @@
+1 [2011-Aug-14 14:29:40.931311] [0x7f8c72402600] [trace] A trace severity message
+2 [2011-Aug-14 14:29:40.932194] [0x7f8c72402600] [debug] A debug severity message
+3 [2011-Aug-14 14:29:40.932233] [0x7f8c72402600] [info] An informational severity message
+4 [2011-Aug-14 14:29:40.932264] [0x7f8c72402600] [warning] A warning severity message
+5 [2011-Aug-14 14:29:40.932294] [0x7f8c72402600] [error] An error severity message
+6 [2011-Aug-14 14:29:40.932324] [0x7f8c72402600] [fatal] A fatal severity message
+1 [2011-Aug-14 14:53:01.926332] [0x7f96624024e0] [info] An informational severity message
+2 [2011-Aug-14 14:53:01.927080] [0x7f96624024e0] [warning] A warning severity message
+3 [2011-Aug-14 14:53:01.927119] [0x7f96624024e0] [error] An error severity message
+4 [2011-Aug-14 14:53:01.927152] [0x7f96624024e0] [fatal] A fatal severity message
+1 [2011-Aug-14 14:53:42.839372] [0x7fb0014024e0] [warning] A warning severity message
+2 [2011-Aug-14 14:53:42.839953] [0x7fb0014024e0] [error] An error severity message
+3 [2011-Aug-14 14:53:42.839992] [0x7fb0014024e0] [fatal] A fatal severity message

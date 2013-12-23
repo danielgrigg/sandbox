@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.6)
+set(PROJ options1)
+set(CMAKE_INSTALL_PREFIX ".." CACHE PATH "${PROJ} install prefix" FORCE)
+project(${PROJ})
+set (Boost_USE_STATIC_LIBS OFF)
+set (Boost_USE_MULTITHREADED ON)
+set (Boost_USE_STATIC_RUNTIME OFF)
+# Can specify version after Boost, ie, 1.45.0
+include_directories(.)
+find_package(Boost COMPONENTS system program_options)
+if (Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+  add_definitions( -DBOOST_ALL_NO_LIB )
+  set(SOURCES)
+  set(SOURCES ${SOURCES} ${PROJ}.cpp)
+  add_executable(${PROJ} ${SOURCES})
+  target_link_libraries(${PROJ} ${Boost_LIBRARIES})
+  #target_link_libraries(${PROJ}  boost_program_options) # optimized debug
+endif()
+install (TARGETS ${PROJ} DESTINATION bin)
+

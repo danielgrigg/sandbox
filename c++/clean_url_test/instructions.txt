@@ -1,0 +1,33 @@
+Problem:
+- Produce a "canonical" representation of an URL given only the URL itself (e.g., no other context like contents of the page)
+ 
+Deliverable:
+- a function to clean the input URL with a signature of: std::string clean_url(const std::string& in);
+- an executable unit test suite taking test input from a tab separated file with the test input in the first column, a tab, the expected result in the second column
+- the test file above, which will show the various test cases tested
+ 
+Input:
+- Any URL, including an invalid URL
+ 
+Output:
+- "Cleaned URL"
+
+Process:
+- Lowercase whole URL including escape sequences
+- Decode percent-encoded octets of unreserved characters %41-%5A, %61-%7A, %30-%39, %2D, %2E, %5F, %7E
+- Remove https:// and http://
+- Remove www.
+- Remove default port (:80)
+- Remove dot segments (../this)
+- Remove directory index (default.[asp|html|htm|php|aspx], index.[asp|html|htm|php|aspx])
+- Remove trailing /
+- Remove fragment (#foo)
+- Remove semi-querystring (;jsessionid=1...)
+- Remove question-querystring (?foo=1...)
+- Remove duplicate slashes (/foo//bar -> /foo/bar)
+ 
+Test Input:
+- HTTPS://www.www.THIS-IS.www.WRONG:80/%7EJoe%5EBloggs//this/../index.html;jsessionid=9a8237a7jf4987?z=&w=1&a=b#fragment
+ 
+Test Output:
+- this-is.www.wrong/~joe%5ebloggs

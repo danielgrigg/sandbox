@@ -1,0 +1,16 @@
+http://www.google.com google.com
+https://www.google.com google.com
+https://www.www.google.com google.com
+https://www.www.googlewwwabc.wwwdef.com googlewwwabc.wwwdef.com
+http://www.google.com:80 google.com
+http://www.google.com:80/ google.com
+http://www.google.com:80/foo/../ google.com
+http://www.google.com/index.html google.com
+http://www.google.com/default.html google.com
+http://www.google.com/default.aspx google.com
+http://www.google.com/default.myfunkyextension google.com
+http://www.google.com/  google.com
+http://www.myservices.com;funky=23  myservices.com
+http://www.myservices.com;funky=23?foobar=42  myservices.com
+http://www.myservices.com//foo//bar//quux/ myservices.com/foo/bar/quux
+HTTPS://www.www.THIS-IS.www.WRONG:80/%7EJoe%5EBloggs//this/../index.html;jsessionid=9a8237a7jf4987?z=&w=1&a=b#fragment  this-is.www.wrong/~joe%5ebloggs

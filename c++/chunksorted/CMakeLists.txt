@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.6)
+set(PROJ chunksorted)
+set(CMAKE_INSTALL_PREFIX ".." CACHE PATH "${PROJ} install prefix" FORCE)
+project(${PROJ})
+add_definitions( -DBOOST_ALL_NO_LIB )
+include_directories(.)
+set(SOURCES)
+set(SOURCES ${SOURCES} ${PROJ}.cpp)
+FIND_PACKAGE(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+add_executable(${PROJ} ${SOURCES})
+install (TARGETS ${PROJ} DESTINATION bin)
+
