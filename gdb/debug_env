@@ -1,0 +1,27 @@
+export MallocLogFile=~/lgs/dragline/j2dragline/malloc_out.log
+
+export MallocGuardEdges
+
+export MallocStackLogging
+
+export MallocStackLoggingNoCompact
+
+
+export MallocScribble
+
+export MallocCheckHeapStart=100 
+
+export MallocCheckHeapEach=100
+
+export MallocCheckHeapSleep=100
+
+#     MallocCheckHeapAbort 
+
+#     MallocErrorAbort             If set, causes abort(3) to be called if an error was encountered in malloc(3)
+#                                  or free(3) , such as a calling free(3) on a pointer previously freed.
+
+#     MallocCorruptionAbort        Similar to MallocErrorAbort but will not abort in out of memory conditions,
+#                                  making it more useful to catch only those errors which will cause memory cor-
+#                                  ruption.  MallocCorruptionAbort is always set on 64-bit processes.
+
+

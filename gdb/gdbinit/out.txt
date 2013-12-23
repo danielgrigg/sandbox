@@ -1,0 +1,32 @@
+Breakpoint 1 at 0x100001c54: file /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp, line 48.
+Breakpoint 2 at 0x100001bb0: file /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp, line 18.
+Breakpoint 3 at 0x100001bf6: file /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp, line 25.
+Starting program: /Users/daniel/sandbox/gdb/gdbinit/gdbinit 
+Reading symbols for shared libraries ++. done
+
+Breakpoint 1, main (argc=1, argv=0x7fff5fbfe8e0) at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:48
+48	  A();
+Continuing.
+
+Breakpoint 3, A () at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:25
+25	  int a = 5;
+Continuing.
+
+Breakpoint 2, AA (l=42) at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:18
+18	  cout << "In AA()" << l << endl;
+13	
+14	using namespace std;
+15	
+16	int AA(int l)
+17	{
+18	  cout << "In AA()" << l << endl;
+19	  sleep(2);
+20	  return 11;
+21	}
+22	
+19	  sleep(2);
+20	  return 11;
+21	}
+A () at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:28
+28	  sleep(5);
+The program is running.  Exit anyway? (y or n) 

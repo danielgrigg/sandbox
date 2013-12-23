@@ -1,0 +1,11 @@
+Num Type           Disp Enb Address            What
+1   breakpoint     keep y   0x0000000100001c54 in main at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:48
+Starting program: /Users/daniel/sandbox/gdb/gdbinit/gdbinit 
+Reading symbols for shared libraries ++. done
+
+Breakpoint 1, main (argc=1, argv=0x7fff5fbfe8e0) at /Users/daniel/sandbox/gdb/gdbinit/gdbinit.cpp:48
+48	  A();
+Continuing.
+
+Program exited normally.
+The program is not being run.

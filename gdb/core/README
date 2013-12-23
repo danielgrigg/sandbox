@@ -1,0 +1,20 @@
+CORE
+
+Why Core? Because it was to test some core dump stuff and became a gdb sandbox instead..
+Go figure.
+
+BUILDING
+
+cmake -DCMAKE_BUILD_TYPE=Debug .
+make .
+
+Running
+See trace_breaks.gdb and core.cpp.  When run they'll log whenever two breakpoints are hit.
+See dump_breaks.gdb for an example of logging to files.
+
+eg,
+gdb core -x trace_breaks.gdb
+
+then send a SIGABRT,
+kill -s SIGABRT <core pid>
+

@@ -1,0 +1,1 @@
+void myproc(int n);
