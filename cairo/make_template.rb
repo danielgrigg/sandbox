@@ -1,0 +1,1 @@
+/Users/daniel/sandbox/c++/make_template.rb
