@@ -1,3 +1,12 @@
+target/
+out/
+*.jar
+*.class
+*.out
+*.bz2
+*.tgz
+*.tar.gz
+*.zip
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
@@ -7,3 +16,4 @@ build/
 *.un~
 .svn/
 xcuserdata/
+*.dSYM/
