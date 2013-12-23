@@ -1,0 +1,3 @@
+http://johnmacfarlane.net/pandoc/demos.html
+
+pandoc -s -r html http://www.gnu.org/software/make/ -o example12.text
