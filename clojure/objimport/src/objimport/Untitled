@@ -1,0 +1,92 @@
+; nREPL 0.1.5
+user> (slurp "~/content/models/test/triangle_p.obj")
+FileNotFoundException ~/content/models/test/triangle_p.obj (No such file or directory)  java.io.FileInputStream.open (FileInputStream.java:-2)
+user> (slurp "/Users/daniel/content/models/test/triangle_p.obj")
+"# This file uses centimeters as units for non-parametric coordinates.\n\nmtllib triangle_p.mtl\ng default\nv 0.000000 0.000000 0.000000\nv 1.000000 0.000000 0.000000\nv 0.000000 1.000000 0.000000\ns off\ng pPlane1\nusemtl initialShadingGroup\nf 1 2 3\n"
+user> (ns objimport.core)
+nil
+objimport.core> (test-model "triangle_p")
+"# This file uses centimeters as units for non-parametric coordinates.\n\nmtllib triangle_p.mtl\ng default\nv 0.000000 0.000000 0.000000\nv 1.000000 0.000000 0.000000\nv 0.000000 1.000000 0.000000\ns off\ng pPlane1\nusemtl initialShadingGroup\nf 1 2 3\n"
+objimport.core> (print-model "triangle_p")
+# This file uses centimeters as units for non-parametric coordinates.
+
+mtllib triangle_p.mtl
+g default
+v 0.000000 0.000000 0.000000
+v 1.000000 0.000000 0.000000
+v 0.000000 1.000000 0.000000
+s off
+g pPlane1
+usemtl initialShadingGroup
+f 1 2 3
+nil
+objimport.core> (with-open [rdr (clojure.java.io/reader "/etc/passwd")]
+			   (count (line-seq rdr)))
+84
+objimport.core> (with-open [rdr (clojure.java.io/reader "/Users/daniel/content/models/test/triangle_p.obj")]
+			   (count (line-seq rdr)))
+11
+objimport.core> (with-open [rdr (clojure.java.io/reader "/Users/daniel/content/models/test/triangle_p.obj")]
+			   (count (line-seq rdr)))
+11
+objimport.core> (parse-model "triangle_p")
+IOException Stream closed  java.io.BufferedReader.ensureOpen (BufferedReader.java:97)
+objimport.core> (parse-model "triangle_p")
+"(\"# This file uses centimeters as units for non-parametric coordinates.\" \"\" \"mtllib triangle_p.mtl\" \"g default\" \"v 0.000000 0.000000 0.000000\" \"v 1.000000 0.000000 0.000000\" \"v 0.000000 1.000000 0.000000\" \"s off\" \"g pPlane1\" \"usemtl initialShadingGroup\" \"f 1 2 3\")"
+objimport.core> (pprint (parse-model "triangle_p"))
+"(\"# This file uses centimeters as units for non-parametric coordinates.\" \"\" \"mtllib triangle_p.mtl\" \"g default\" \"v 0.000000 0.000000 0.000000\" \"v 1.000000 0.000000 0.000000\" \"v 0.000000 1.000000 0.000000\" \"s off\" \"g pPlane1\" \"usemtl initialShadingGroup\" \"f 1 2 3\")"
+nil
+objimport.core> (with-open [rdr (clojure.java.io/reader "/Users/daniel/content/models/test/triangle_p.obj")]
+			   (apply str (line-seq rdr)))
+"# This file uses centimeters as units for non-parametric coordinates.mtllib triangle_p.mtlg defaultv 0.000000 0.000000 0.000000v 1.000000 0.000000 0.000000v 0.000000 1.000000 0.000000s offg pPlane1usemtl initialShadingGroupf 1 2 3"
+objimport.core> (with-open [rdr (clojure.java.io/reader "/Users/daniel/content/models/test/triangle_p.obj")]
+			   (apply str (line-seq rdr)))
+"# This file uses centimeters as units for non-parametric coordinates.mtllib triangle_p.mtlg defaultv 0.000000 0.000000 0.000000v 1.000000 0.000000 0.000000v 0.000000 1.000000 0.000000s offg pPlane1usemtl initialShadingGroupf 1 2 3"
+objimport.core> (parse-model "triangle_p")
+IOException Stream closed  java.io.BufferedReader.ensureOpen (BufferedReader.java:97)
+objimport.core> (with-open [rdr (clojure.java.io/reader "/Users/daniel/content/models/test/triangle_p.obj")]
+			   (map count (line-seq rdr)))
+IOException Stream closed  java.io.BufferedReader.ensureOpen (BufferedReader.java:97)
+objimport.core> (clojure.string/split-lines "foo bar")
+["foo bar"]
+objimport.core> (clojure.string/split-lines "foo\nbar")
+["foo" "bar"]
+objimport.core> (clojure.string/split-lines (test-model "triangle_p"))
+["# This file uses centimeters as units for non-parametric coordinates." "" "mtllib triangle_p.mtl" "g default" "v 0.000000 0.000000 0.000000" "v 1.000000 0.000000 0.000000" "v 0.000000 1.000000 0.000000" "s off" "g pPlane1" "usemtl initialShadingGroup" "f 1 2 3"]
+objimport.core> (apply count (clojure.string/split-lines (test-model "triangle_p")))
+ArityException Wrong number of args (11) passed to: core$count  clojure.lang.AFn.throwArity (AFn.java:437)
+objimport.core> (map count (clojure.string/split-lines (test-model "triangle_p")))
+(69 0 21 9 28 28 28 5 9 26 7)
+objimport.core> (re-seq #"^v" "v 1 2 3")
+("v")
+objimport.core> (re-seq #"^v .*" "v 1 2 3")
+("v 1 2 3")
+objimport.core> {:a 3 :b 4)
+RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:170)
+objimport.core> {:a 3 :b 4}
+{:a 3, :b 4}
+objimport.core> {"v" 1 "f" 2}
+{"f" 2, "v" 1}
+objimport.core> ({"v" 1 "f" 2} "v")
+1
+objimport.core> (parser-fns \v)
+#<core$parse_vertex objimport.core$parse_vertex@4f2f68b8>
+objimport.core> (test-model "triangle_p")
+["# This file uses centimeters as units for non-parametric coordinates." "" "mtllib triangle_p.mtl" "g default" "v 0.000000 0.000000 0.000000" "v 1.000000 0.000000 0.000000" "v 0.000000 1.000000 0.000000" "s off" "g pPlane1" "usemtl initialShadingGroup" "f 1 2 3"]
+objimport.core> (map (fn [l] (parser-fns (first l)))  (test-model "triangle_p"))
+(nil nil nil nil #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> nil nil nil #<core$parse_face objimport.core$parse_face@3da2cda9>)
+objimport.core> (map (fn [l] ((parser-fns (first l)) l))  (test-model "triangle_p"))
+NullPointerException   objimport.core/eval1813/fn--1814 (NO_SOURCE_FILE:1)
+objimport.core> (get parser-fns \v "foo")
+#<core$parse_vertex objimport.core$parse_vertex@4f2f68b8>
+objimport.core> (get parser-fns \g "foo")
+"foo"
+objimport.core> (get parser-fns \g identity)
+#<core$identity clojure.core$identity@53afcf20>
+objimport.core> (parser-fn "v 34 2 3 21")
+#<core$parse_vertex objimport.core$parse_vertex@4f2f68b8>
+objimport.core> (map parser-fn (test-model "triangle_p"))
+(#<core$identity clojure.core$identity@53afcf20> #<core$identity clojure.core$identity@53afcf20> #<core$identity clojure.core$identity@53afcf20> #<core$identity clojure.core$identity@53afcf20> #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> #<core$parse_vertex objimport.core$parse_vertex@4f2f68b8> #<core$identity clojure.core$identity@53afcf20> #<core$identity clojure.core$identity@53afcf20> #<core$identity clojure.core$identity@53afcf20> #<core$parse_face objimport.core$parse_face@3da2cda9>)
+objimport.core> (map #((parser-fn % %)) (test-model "triangle_p"))
+ArityException Wrong number of args (2) passed to: core$parser-fn  clojure.lang.AFn.throwArity (AFn.java:437)
+objimport.core> (map #((parser-fn %) %) (test-model "triangle_p"))
