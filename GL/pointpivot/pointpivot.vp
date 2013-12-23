@@ -1,0 +1,17 @@
+#version 120
+
+uniform mat4	mvMatrix;
+uniform mat4	mvpMatrix;
+uniform float uTime;
+attribute vec4 vVertex;
+attribute vec4 vColor;
+varying vec4 starColor;
+
+void main(void) 
+{ 
+  vec4 pos = vVertex;
+  gl_PointSize = 20.0 + (pos.z / sqrt(-pos.z));
+  //gl_PointSize = 10;
+  starColor = smoothstep(0.0, 4.0, gl_PointSize) * vColor;
+  gl_Position = mvpMatrix * pos;
+}
