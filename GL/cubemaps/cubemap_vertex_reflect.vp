@@ -1,0 +1,21 @@
+#version 120
+
+// Transformation Matrix
+uniform mat4 mvpMatrix;
+uniform mat4 mvMatrix;
+uniform mat4 invCamera;
+uniform mat4 normalMatrix;
+
+attribute vec4 vVertex;
+attribute vec3 vNormal;
+varying vec3 skyTexCoord;
+
+void main(void) 
+{ 
+  vec3 eyeNormal = vec3(normalMatrix * vec4(vNormal,0));
+  vec4 V = mvMatrix * vVertex;
+  vec3 eyeVertex = normalize(V.xyz / V.w);
+  vec4 worldReflect = invCamera * vec4(reflect(eyeVertex, eyeNormal), 1.0);
+  skyTexCoord = normalize(worldReflect.xyz);
+  gl_Position = mvpMatrix * vVertex;
+}
