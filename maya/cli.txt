@@ -1,0 +1,1 @@
+./Render -r mr -rd ~/temp -of jpeg -im clitest -s 200 -e 200 -cam camera5 -x 1280 -y 720 ~/lgs/dragline/mockup/pit_working.mb
