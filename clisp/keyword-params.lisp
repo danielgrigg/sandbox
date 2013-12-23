@@ -1,0 +1,1 @@
+(defun foo (&key a (b 20) (c 30 c-p)) (list a b c c-p))
