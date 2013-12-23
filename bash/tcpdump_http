@@ -1,0 +1,2 @@
+sudo tcpdump -A -vvv host nexus.int.covata.com | egrep GET
+

@@ -1,0 +1,23 @@
+# nohup ./long_script &
+
+set -e # exit on error
+
+
+# if [ ${#my_string} != 14 ]; then "echo not long enough"; fi
+
+URL=${URL:-http://localhost:8080}
+
+echo "Url is $URL"
+
+TIMEOUT=5
+read -t $TIMEOUT input
+
+input=$(sed 's/[^0-9]*//g' <<< $input)
+
+echo "input is: $input"
+
+filename=`basename $filepath" .html`
+
+while true; do { echo -e 'HTTP/1.1 200 OK\r\n'; cat profile.jpg; } | nc -l 8080; done
+
+for file in *; { wc -c $file; }

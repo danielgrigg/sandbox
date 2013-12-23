@@ -1,0 +1,1211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Sample .bashrc  and
+	    .bash_profile Files</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Advanced Bash-Scripting Guide"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="History Commands"
+HREF="histcommands.html"><LINK
+REL="NEXT"
+TITLE="Converting DOS Batch Files to Shell Scripts"
+HREF="dosbatch.html"><META
+HTTP-EQUIV="Content-Style-Type"
+CONTENT="text/css"><LINK
+REL="stylesheet"
+HREF="common/kde-common.css"
+TYPE="text/css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=iso-8859-1"><META
+HTTP-EQUIV="Content-Language"
+CONTENT="en"><LINK
+REL="stylesheet"
+HREF="common/kde-localised.css"
+TYPE="text/css"
+TITLE="KDE-English"><LINK
+REL="stylesheet"
+HREF="common/kde-default.css"
+TYPE="text/css"
+TITLE="KDE-Default"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#AA0000"
+VLINK="#AA0055"
+ALINK="#AA0000"
+STYLE="font-family: sans-serif;"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Advanced Bash-Scripting Guide: An in-depth exploration of the art of shell scripting</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="histcommands.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="dosbatch.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="SAMPLE-BASHRC"
+></A
+>Appendix M. Sample <TT
+CLASS="FILENAME"
+>.bashrc</TT
+>  and
+	    <TT
+CLASS="FILENAME"
+>.bash_profile</TT
+> Files</H1
+><P
+>The <TT
+CLASS="FILENAME"
+>~/.bashrc</TT
+> file determines the
+       behavior of interactive shells. A good look at this file can
+       lead to a better understanding of Bash.</P
+><P
+><A
+HREF="mailto:emmanuel.rouat@wanadoo.fr"
+TARGET="_top"
+>Emmanuel
+        Rouat</A
+> contributed the following very elaborate
+        <TT
+CLASS="FILENAME"
+>.bashrc</TT
+> file, written for a Linux system.
+        He welcomes reader feedback on it.</P
+><P
+>Study the file carefully, and feel free to reuse code
+        snippets and functions from it in your own
+        <TT
+CLASS="FILENAME"
+>.bashrc</TT
+> file or even in your scripts.</P
+><DIV
+CLASS="EXAMPLE"
+><HR><A
+NAME="BASHRC"
+></A
+><P
+><B
+>Example M-1. Sample <TT
+CLASS="FILENAME"
+>.bashrc</TT
+> file</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>   1&nbsp;# =============================================================== #
+   2&nbsp;#
+   3&nbsp;# PERSONAL $HOME/.bashrc FILE for bash-3.0 (or later)
+   4&nbsp;# By Emmanuel Rouat [no-email]
+   5&nbsp;#
+   6&nbsp;# Last modified: Fri Sep 21 21:02:58 CEST 2012.
+   7&nbsp;
+   8&nbsp;# This file is read (normally) by interactive shells only.
+   9&nbsp;# Here is the place to define your aliases, functions and
+  10&nbsp;# other interactive features like your prompt.
+  11&nbsp;#
+  12&nbsp;# The majority of the code here assumes you are on a GNU
+  13&nbsp;# system (most likely a Linux box) and is often based on code
+  14&nbsp;# found on Usenet or Internet.
+  15&nbsp;#
+  16&nbsp;# See for instance:
+  17&nbsp;# http://tldp.org/LDP/abs/html/index.html
+  18&nbsp;# http://www.caliban.org/bash
+  19&nbsp;# http://www.shelldorado.com/scripts/categories.html
+  20&nbsp;# http://www.dotfiles.org
+  21&nbsp;#
+  22&nbsp;# The choice of colors was done for a shell with a dark background
+  23&nbsp;# (white on black), and this is usually also suited for pure text-mode
+  24&nbsp;# consoles (no X server available). If you use a white background,
+  25&nbsp;# you'll have to do some other choices for readability.
+  26&nbsp;#
+  27&nbsp;# This bashrc file is a bit overcrowded.
+  28&nbsp;# Remember, it is just just an example.
+  29&nbsp;# Tailor it to your needs.
+  30&nbsp;#
+  31&nbsp;# =============================================================== #
+  32&nbsp;
+  33&nbsp;# --&#62; Comments added by HOWTO author.
+  34&nbsp;
+  35&nbsp;# If not running interactively, don't do anything
+  36&nbsp;[ -z "$PS1" ] &#38;&#38; return
+  37&nbsp;
+  38&nbsp;
+  39&nbsp;#-------------------------------------------------------------
+  40&nbsp;# Source global definitions (if any)
+  41&nbsp;#-------------------------------------------------------------
+  42&nbsp;
+  43&nbsp;
+  44&nbsp;if [ -f /etc/bashrc ]; then
+  45&nbsp;      . /etc/bashrc   # --&#62; Read /etc/bashrc, if present.
+  46&nbsp;fi
+  47&nbsp;
+  48&nbsp;
+  49&nbsp;#--------------------------------------------------------------
+  50&nbsp;#  Automatic setting of $DISPLAY (if not set already).
+  51&nbsp;#  This works for me - your mileage may vary. . . .
+  52&nbsp;#  The problem is that different types of terminals give
+  53&nbsp;#+ different answers to 'who am i' (rxvt in particular can be
+  54&nbsp;#+ troublesome) - however this code seems to work in a majority
+  55&nbsp;#+ of cases.
+  56&nbsp;#--------------------------------------------------------------
+  57&nbsp;
+  58&nbsp;function get_xserver ()
+  59&nbsp;{
+  60&nbsp;    case $TERM in
+  61&nbsp;        xterm )
+  62&nbsp;            XSERVER=$(who am i | awk '{print $NF}' | tr -d ')''(' )
+  63&nbsp;            # Ane-Pieter Wieringa suggests the following alternative:
+  64&nbsp;            #  I_AM=$(who am i)
+  65&nbsp;            #  SERVER=${I_AM#*(}
+  66&nbsp;            #  SERVER=${SERVER%*)}
+  67&nbsp;            XSERVER=${XSERVER%%:*}
+  68&nbsp;            ;;
+  69&nbsp;            aterm | rxvt)
+  70&nbsp;            # Find some code that works here. ...
+  71&nbsp;            ;;
+  72&nbsp;    esac
+  73&nbsp;}
+  74&nbsp;
+  75&nbsp;if [ -z ${DISPLAY:=""} ]; then
+  76&nbsp;    get_xserver
+  77&nbsp;    if [[ -z ${XSERVER}  || ${XSERVER} == $(hostname) ||
+  78&nbsp;       ${XSERVER} == "unix" ]]; then
+  79&nbsp;          DISPLAY=":0.0"          # Display on local host.
+  80&nbsp;    else
+  81&nbsp;       DISPLAY=${XSERVER}:0.0     # Display on remote host.
+  82&nbsp;    fi
+  83&nbsp;fi
+  84&nbsp;
+  85&nbsp;export DISPLAY
+  86&nbsp;
+  87&nbsp;#-------------------------------------------------------------
+  88&nbsp;# Some settings
+  89&nbsp;#-------------------------------------------------------------
+  90&nbsp;
+  91&nbsp;#set -o nounset     # These  two options are useful for debuging.
+  92&nbsp;#set -o xtrace
+  93&nbsp;alias debug="set -o nounset; set -o xtrace"
+  94&nbsp;
+  95&nbsp;ulimit -S -c 0      # Don't want any coredumps.
+  96&nbsp;set -o notify
+  97&nbsp;set -o noclobber
+  98&nbsp;set -o ignoreeof
+  99&nbsp;
+ 100&nbsp;
+ 101&nbsp;# Enable options:
+ 102&nbsp;shopt -s cdspell
+ 103&nbsp;shopt -s cdable_vars
+ 104&nbsp;shopt -s checkhash
+ 105&nbsp;shopt -s checkwinsize
+ 106&nbsp;shopt -s sourcepath
+ 107&nbsp;shopt -s no_empty_cmd_completion
+ 108&nbsp;shopt -s cmdhist
+ 109&nbsp;shopt -s histappend histreedit histverify
+ 110&nbsp;shopt -s extglob       # Necessary for programmable completion.
+ 111&nbsp;
+ 112&nbsp;# Disable options:
+ 113&nbsp;shopt -u mailwarn
+ 114&nbsp;unset MAILCHECK        # Don't want my shell to warn me of incoming mail.
+ 115&nbsp;
+ 116&nbsp;
+ 117&nbsp;#-------------------------------------------------------------
+ 118&nbsp;# Greeting, motd etc. ...
+ 119&nbsp;#-------------------------------------------------------------
+ 120&nbsp;
+ 121&nbsp;# Color definitions (taken from Color Bash Prompt HowTo).
+ 122&nbsp;# Some colors might look different of some terminals.
+ 123&nbsp;# For example, I see 'Bold Red' as 'orange' on my screen,
+ 124&nbsp;# hence the 'Green' 'BRed' 'Red' sequence I often use in my prompt.
+ 125&nbsp;
+ 126&nbsp;
+ 127&nbsp;# Normal Colors
+ 128&nbsp;Black='\e[0;30m'        # Black
+ 129&nbsp;Red='\e[0;31m'          # Red
+ 130&nbsp;Green='\e[0;32m'        # Green
+ 131&nbsp;Yellow='\e[0;33m'       # Yellow
+ 132&nbsp;Blue='\e[0;34m'         # Blue
+ 133&nbsp;Purple='\e[0;35m'       # Purple
+ 134&nbsp;Cyan='\e[0;36m'         # Cyan
+ 135&nbsp;White='\e[0;37m'        # White
+ 136&nbsp;
+ 137&nbsp;# Bold
+ 138&nbsp;BBlack='\e[1;30m'       # Black
+ 139&nbsp;BRed='\e[1;31m'         # Red
+ 140&nbsp;BGreen='\e[1;32m'       # Green
+ 141&nbsp;BYellow='\e[1;33m'      # Yellow
+ 142&nbsp;BBlue='\e[1;34m'        # Blue
+ 143&nbsp;BPurple='\e[1;35m'      # Purple
+ 144&nbsp;BCyan='\e[1;36m'        # Cyan
+ 145&nbsp;BWhite='\e[1;37m'       # White
+ 146&nbsp;
+ 147&nbsp;# Background
+ 148&nbsp;On_Black='\e[40m'       # Black
+ 149&nbsp;On_Red='\e[41m'         # Red
+ 150&nbsp;On_Green='\e[42m'       # Green
+ 151&nbsp;On_Yellow='\e[43m'      # Yellow
+ 152&nbsp;On_Blue='\e[44m'        # Blue
+ 153&nbsp;On_Purple='\e[45m'      # Purple
+ 154&nbsp;On_Cyan='\e[46m'        # Cyan
+ 155&nbsp;On_White='\e[47m'       # White
+ 156&nbsp;
+ 157&nbsp;NC="\e[m"               # Color Reset
+ 158&nbsp;
+ 159&nbsp;
+ 160&nbsp;ALERT=${BWhite}${On_Red} # Bold White on red background
+ 161&nbsp;
+ 162&nbsp;
+ 163&nbsp;
+ 164&nbsp;echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
+ 165&nbsp;- DISPLAY on ${BRed}$DISPLAY${NC}\n"
+ 166&nbsp;date
+ 167&nbsp;if [ -x /usr/games/fortune ]; then
+ 168&nbsp;    /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
+ 169&nbsp;fi
+ 170&nbsp;
+ 171&nbsp;function _exit()              # Function to run upon exit of shell.
+ 172&nbsp;{
+ 173&nbsp;    echo -e "${BRed}Hasta la vista, baby${NC}"
+ 174&nbsp;}
+ 175&nbsp;trap _exit EXIT
+ 176&nbsp;
+ 177&nbsp;#-------------------------------------------------------------
+ 178&nbsp;# Shell Prompt - for many examples, see:
+ 179&nbsp;#       http://www.debian-administration.org/articles/205
+ 180&nbsp;#       http://www.askapache.com/linux/bash-power-prompt.html
+ 181&nbsp;#       http://tldp.org/HOWTO/Bash-Prompt-HOWTO
+ 182&nbsp;#       https://github.com/nojhan/liquidprompt
+ 183&nbsp;#-------------------------------------------------------------
+ 184&nbsp;# Current Format: [TIME USER@HOST PWD] &#62;
+ 185&nbsp;# TIME:
+ 186&nbsp;#    Green     == machine load is low
+ 187&nbsp;#    Orange    == machine load is medium
+ 188&nbsp;#    Red       == machine load is high
+ 189&nbsp;#    ALERT     == machine load is very high
+ 190&nbsp;# USER:
+ 191&nbsp;#    Cyan      == normal user
+ 192&nbsp;#    Orange    == SU to user
+ 193&nbsp;#    Red       == root
+ 194&nbsp;# HOST:
+ 195&nbsp;#    Cyan      == local session
+ 196&nbsp;#    Green     == secured remote connection (via ssh)
+ 197&nbsp;#    Red       == unsecured remote connection
+ 198&nbsp;# PWD:
+ 199&nbsp;#    Green     == more than 10% free disk space
+ 200&nbsp;#    Orange    == less than 10% free disk space
+ 201&nbsp;#    ALERT     == less than 5% free disk space
+ 202&nbsp;#    Red       == current user does not have write privileges
+ 203&nbsp;#    Cyan      == current filesystem is size zero (like /proc)
+ 204&nbsp;# &#62;:
+ 205&nbsp;#    White     == no background or suspended jobs in this shell
+ 206&nbsp;#    Cyan      == at least one background job in this shell
+ 207&nbsp;#    Orange    == at least one suspended job in this shell
+ 208&nbsp;#
+ 209&nbsp;#    Command is added to the history file each time you hit enter,
+ 210&nbsp;#    so it's available to all shells (using 'history -a').
+ 211&nbsp;
+ 212&nbsp;
+ 213&nbsp;# Test connection type:
+ 214&nbsp;if [ -n "${SSH_CONNECTION}" ]; then
+ 215&nbsp;    CNX=${Green}        # Connected on remote machine, via ssh (good).
+ 216&nbsp;elif [[ "${DISPLAY%%:0*}" != "" ]]; then
+ 217&nbsp;    CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
+ 218&nbsp;else
+ 219&nbsp;    CNX=${BCyan}        # Connected on local machine.
+ 220&nbsp;fi
+ 221&nbsp;
+ 222&nbsp;# Test user type:
+ 223&nbsp;if [[ ${USER} == "root" ]]; then
+ 224&nbsp;    SU=${Red}           # User is root.
+ 225&nbsp;elif [[ ${USER} != $(logname) ]]; then
+ 226&nbsp;    SU=${BRed}          # User is not login user.
+ 227&nbsp;else
+ 228&nbsp;    SU=${BCyan}         # User is normal (well ... most of us are).
+ 229&nbsp;fi
+ 230&nbsp;
+ 231&nbsp;
+ 232&nbsp;
+ 233&nbsp;NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
+ 234&nbsp;SLOAD=$(( 100*${NCPU} ))        # Small load
+ 235&nbsp;MLOAD=$(( 200*${NCPU} ))        # Medium load
+ 236&nbsp;XLOAD=$(( 400*${NCPU} ))        # Xlarge load
+ 237&nbsp;
+ 238&nbsp;# Returns system load as percentage, i.e., '40' rather than '0.40)'.
+ 239&nbsp;function load()
+ 240&nbsp;{
+ 241&nbsp;    local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
+ 242&nbsp;    # System load of the current host.
+ 243&nbsp;    echo $((10#$SYSLOAD))       # Convert to decimal.
+ 244&nbsp;}
+ 245&nbsp;
+ 246&nbsp;# Returns a color indicating system load.
+ 247&nbsp;function load_color()
+ 248&nbsp;{
+ 249&nbsp;    local SYSLOAD=$(load)
+ 250&nbsp;    if [ ${SYSLOAD} -gt ${XLOAD} ]; then
+ 251&nbsp;        echo -en ${ALERT}
+ 252&nbsp;    elif [ ${SYSLOAD} -gt ${MLOAD} ]; then
+ 253&nbsp;        echo -en ${Red}
+ 254&nbsp;    elif [ ${SYSLOAD} -gt ${SLOAD} ]; then
+ 255&nbsp;        echo -en ${BRed}
+ 256&nbsp;    else
+ 257&nbsp;        echo -en ${Green}
+ 258&nbsp;    fi
+ 259&nbsp;}
+ 260&nbsp;
+ 261&nbsp;# Returns a color according to free disk space in $PWD.
+ 262&nbsp;function disk_color()
+ 263&nbsp;{
+ 264&nbsp;    if [ ! -w "${PWD}" ] ; then
+ 265&nbsp;        echo -en ${Red}
+ 266&nbsp;        # No 'write' privilege in the current directory.
+ 267&nbsp;    elif [ -s "${PWD}" ] ; then
+ 268&nbsp;        local used=$(command df -P "$PWD" |
+ 269&nbsp;                   awk 'END {print $5} {sub(/%/,"")}')
+ 270&nbsp;        if [ ${used} -gt 95 ]; then
+ 271&nbsp;            echo -en ${ALERT}           # Disk almost full (&#62;95%).
+ 272&nbsp;        elif [ ${used} -gt 90 ]; then
+ 273&nbsp;            echo -en ${BRed}            # Free disk space almost gone.
+ 274&nbsp;        else
+ 275&nbsp;            echo -en ${Green}           # Free disk space is ok.
+ 276&nbsp;        fi
+ 277&nbsp;    else
+ 278&nbsp;        echo -en ${Cyan}
+ 279&nbsp;        # Current directory is size '0' (like /proc, /sys etc).
+ 280&nbsp;    fi
+ 281&nbsp;}
+ 282&nbsp;
+ 283&nbsp;# Returns a color according to running/suspended jobs.
+ 284&nbsp;function job_color()
+ 285&nbsp;{
+ 286&nbsp;    if [ $(jobs -s | wc -l) -gt "0" ]; then
+ 287&nbsp;        echo -en ${BRed}
+ 288&nbsp;    elif [ $(jobs -r | wc -l) -gt "0" ] ; then
+ 289&nbsp;        echo -en ${BCyan}
+ 290&nbsp;    fi
+ 291&nbsp;}
+ 292&nbsp;
+ 293&nbsp;# Adds some text in the terminal frame (if applicable).
+ 294&nbsp;function xtitle()
+ 295&nbsp;{
+ 296&nbsp;    case "$TERM" in
+ 297&nbsp;        *term* | rxvt)
+ 298&nbsp;            echo -en  "\033]0;$*\007" ;;
+ 299&nbsp;        *)  ;;
+ 300&nbsp;    esac
+ 301&nbsp;}
+ 302&nbsp;
+ 303&nbsp;# Now we construct the prompt.
+ 304&nbsp;PROMPT_COMMAND="history -a"
+ 305&nbsp;case ${TERM} in
+ 306&nbsp;  *term | rxvt | linux)
+ 307&nbsp;        PS1="\[\$(load_color)\][\A\[${NC}\] "
+ 308&nbsp;        # Time of day (with load info).
+ 309&nbsp;        PS1=${PS1}"\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\] "
+ 310&nbsp;        # User@Host (with connection type info).
+ 311&nbsp;        PS1=${PS1}"\[\$(disk_color)\]\W]\[${NC}\] "
+ 312&nbsp;        # PWD (with 'disk space' info).
+ 313&nbsp;        PS1=${PS1}"\[\$(job_color)\]&#62;\[${NC}\] "
+ 314&nbsp;        # Prompt (with 'job' info).
+ 315&nbsp;        PS1=${PS1}"\[\$(xtitle '[\u@\h] \w')\]"
+ 316&nbsp;        # Title of current xterm.
+ 317&nbsp;        ;;
+ 318&nbsp;    *)
+ 319&nbsp;        PS1="(\A \u@\h \W) &#62; " # --&#62; PS1="(\A \u@\h \w) &#62; "
+ 320&nbsp;                               # --&#62; Shows full pathname of current dir.
+ 321&nbsp;        ;;
+ 322&nbsp;esac
+ 323&nbsp;
+ 324&nbsp;
+ 325&nbsp;
+ 326&nbsp;export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
+ 327&nbsp;export HISTIGNORE="&#38;:bg:fg:ll:h"
+ 328&nbsp;export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
+ 329&nbsp;export HISTCONTROL=ignoredups
+ 330&nbsp;export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
+ 331&nbsp;
+ 332&nbsp;
+ 333&nbsp;#============================================================
+ 334&nbsp;#
+ 335&nbsp;#  ALIASES AND FUNCTIONS
+ 336&nbsp;#
+ 337&nbsp;#  Arguably, some functions defined here are quite big.
+ 338&nbsp;#  If you want to make this file smaller, these functions can
+ 339&nbsp;#+ be converted into scripts and removed from here.
+ 340&nbsp;#
+ 341&nbsp;#============================================================
+ 342&nbsp;
+ 343&nbsp;#-------------------
+ 344&nbsp;# Personnal Aliases
+ 345&nbsp;#-------------------
+ 346&nbsp;
+ 347&nbsp;alias rm='rm -i'
+ 348&nbsp;alias cp='cp -i'
+ 349&nbsp;alias mv='mv -i'
+ 350&nbsp;# -&#62; Prevents accidentally clobbering files.
+ 351&nbsp;alias mkdir='mkdir -p'
+ 352&nbsp;
+ 353&nbsp;alias h='history'
+ 354&nbsp;alias j='jobs -l'
+ 355&nbsp;alias which='type -a'
+ 356&nbsp;alias ..='cd ..'
+ 357&nbsp;
+ 358&nbsp;# Pretty-print of some PATH variables:
+ 359&nbsp;alias path='echo -e ${PATH//:/\\n}'
+ 360&nbsp;alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+ 361&nbsp;
+ 362&nbsp;
+ 363&nbsp;alias du='du -kh'    # Makes a more readable output.
+ 364&nbsp;alias df='df -kTh'
+ 365&nbsp;
+ 366&nbsp;#-------------------------------------------------------------
+ 367&nbsp;# The 'ls' family (this assumes you use a recent GNU ls).
+ 368&nbsp;#-------------------------------------------------------------
+ 369&nbsp;# Add colors for filetype and  human-readable sizes by default on 'ls':
+ 370&nbsp;alias ls='ls -h --color'
+ 371&nbsp;alias lx='ls -lXB'         #  Sort by extension.
+ 372&nbsp;alias lk='ls -lSr'         #  Sort by size, biggest last.
+ 373&nbsp;alias lt='ls -ltr'         #  Sort by date, most recent last.
+ 374&nbsp;alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
+ 375&nbsp;alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+ 376&nbsp;
+ 377&nbsp;# The ubiquitous 'll': directories first, with alphanumeric sorting:
+ 378&nbsp;alias ll="ls -lv --group-directories-first"
+ 379&nbsp;alias lm='ll |more'        #  Pipe through 'more'
+ 380&nbsp;alias lr='ll -R'           #  Recursive ls.
+ 381&nbsp;alias la='ll -A'           #  Show hidden files.
+ 382&nbsp;alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+ 383&nbsp;
+ 384&nbsp;
+ 385&nbsp;#-------------------------------------------------------------
+ 386&nbsp;# Tailoring 'less'
+ 387&nbsp;#-------------------------------------------------------------
+ 388&nbsp;
+ 389&nbsp;alias more='less'
+ 390&nbsp;export PAGER=less
+ 391&nbsp;export LESSCHARSET='latin1'
+ 392&nbsp;export LESSOPEN='|/usr/bin/lesspipe.sh %s 2&#62;&#38;-'
+ 393&nbsp;                # Use this if lesspipe.sh exists.
+ 394&nbsp;export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f \
+ 395&nbsp;:stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
+ 396&nbsp;
+ 397&nbsp;# LESS man page colors (makes Man pages more readable).
+ 398&nbsp;export LESS_TERMCAP_mb=$'\E[01;31m'
+ 399&nbsp;export LESS_TERMCAP_md=$'\E[01;31m'
+ 400&nbsp;export LESS_TERMCAP_me=$'\E[0m'
+ 401&nbsp;export LESS_TERMCAP_se=$'\E[0m'
+ 402&nbsp;export LESS_TERMCAP_so=$'\E[01;44;33m'
+ 403&nbsp;export LESS_TERMCAP_ue=$'\E[0m'
+ 404&nbsp;export LESS_TERMCAP_us=$'\E[01;32m'
+ 405&nbsp;
+ 406&nbsp;
+ 407&nbsp;#-------------------------------------------------------------
+ 408&nbsp;# Spelling typos - highly personnal and keyboard-dependent :-)
+ 409&nbsp;#-------------------------------------------------------------
+ 410&nbsp;
+ 411&nbsp;alias xs='cd'
+ 412&nbsp;alias vf='cd'
+ 413&nbsp;alias moer='more'
+ 414&nbsp;alias moew='more'
+ 415&nbsp;alias kk='ll'
+ 416&nbsp;
+ 417&nbsp;
+ 418&nbsp;#-------------------------------------------------------------
+ 419&nbsp;# A few fun ones
+ 420&nbsp;#-------------------------------------------------------------
+ 421&nbsp;
+ 422&nbsp;
+ 423&nbsp;# Aliases that use xtitle
+ 424&nbsp;alias top='xtitle Processes on $HOST &#38;&#38; top'
+ 425&nbsp;alias make='xtitle Making $(basename $PWD) ; make'
+ 426&nbsp;
+ 427&nbsp;# .. and functions
+ 428&nbsp;function man()
+ 429&nbsp;{
+ 430&nbsp;    for i ; do
+ 431&nbsp;        xtitle The $(basename $1|tr -d .[:digit:]) manual
+ 432&nbsp;        command man -a "$i"
+ 433&nbsp;    done
+ 434&nbsp;}
+ 435&nbsp;
+ 436&nbsp;
+ 437&nbsp;#-------------------------------------------------------------
+ 438&nbsp;# Make the following commands run in background automatically:
+ 439&nbsp;#-------------------------------------------------------------
+ 440&nbsp;
+ 441&nbsp;function te()  # wrapper around xemacs/gnuserv
+ 442&nbsp;{
+ 443&nbsp;    if [ "$(gnuclient -batch -eval t 2&#62;&#38;-)" == "t" ]; then
+ 444&nbsp;       gnuclient -q "$@";
+ 445&nbsp;    else
+ 446&nbsp;       ( xemacs "$@" &#38;);
+ 447&nbsp;    fi
+ 448&nbsp;}
+ 449&nbsp;
+ 450&nbsp;function soffice() { command soffice "$@" &#38; }
+ 451&nbsp;function firefox() { command firefox "$@" &#38; }
+ 452&nbsp;function xpdf() { command xpdf "$@" &#38; }
+ 453&nbsp;
+ 454&nbsp;
+ 455&nbsp;#-------------------------------------------------------------
+ 456&nbsp;# File &#38; strings related functions:
+ 457&nbsp;#-------------------------------------------------------------
+ 458&nbsp;
+ 459&nbsp;
+ 460&nbsp;# Find a file with a pattern in name:
+ 461&nbsp;function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
+ 462&nbsp;
+ 463&nbsp;# Find a file with pattern $1 in name and Execute $2 on it:
+ 464&nbsp;function fe() { find . -type f -iname '*'"${1:-}"'*' \
+ 465&nbsp;-exec ${2:-file} {} \;  ; }
+ 466&nbsp;
+ 467&nbsp;#  Find a pattern in a set of files and highlight them:
+ 468&nbsp;#+ (needs a recent version of egrep).
+ 469&nbsp;function fstr()
+ 470&nbsp;{
+ 471&nbsp;    OPTIND=1
+ 472&nbsp;    local mycase=""
+ 473&nbsp;    local usage="fstr: find string in files.
+ 474&nbsp;Usage: fstr [-i] \"pattern\" [\"filename pattern\"] "
+ 475&nbsp;    while getopts :it opt
+ 476&nbsp;    do
+ 477&nbsp;        case "$opt" in
+ 478&nbsp;           i) mycase="-i " ;;
+ 479&nbsp;           *) echo "$usage"; return ;;
+ 480&nbsp;        esac
+ 481&nbsp;    done
+ 482&nbsp;    shift $(( $OPTIND - 1 ))
+ 483&nbsp;    if [ "$#" -lt 1 ]; then
+ 484&nbsp;        echo "$usage"
+ 485&nbsp;        return;
+ 486&nbsp;    fi
+ 487&nbsp;    find . -type f -name "${2:-*}" -print0 | \
+ 488&nbsp;xargs -0 egrep --color=always -sn ${case} "$1" 2&#62;&#38;- | more
+ 489&nbsp;
+ 490&nbsp;}
+ 491&nbsp;
+ 492&nbsp;
+ 493&nbsp;function swap()
+ 494&nbsp;{ # Swap 2 filenames around, if they exist (from Uzi's bashrc).
+ 495&nbsp;    local TMPFILE=tmp.$$
+ 496&nbsp;
+ 497&nbsp;    [ $# -ne 2 ] &#38;&#38; echo "swap: 2 arguments needed" &#38;&#38; return 1
+ 498&nbsp;    [ ! -e $1 ] &#38;&#38; echo "swap: $1 does not exist" &#38;&#38; return 1
+ 499&nbsp;    [ ! -e $2 ] &#38;&#38; echo "swap: $2 does not exist" &#38;&#38; return 1
+ 500&nbsp;
+ 501&nbsp;    mv "$1" $TMPFILE
+ 502&nbsp;    mv "$2" "$1"
+ 503&nbsp;    mv $TMPFILE "$2"
+ 504&nbsp;}
+ 505&nbsp;
+ 506&nbsp;function extract()      # Handy Extract Program
+ 507&nbsp;{
+ 508&nbsp;    if [ -f $1 ] ; then
+ 509&nbsp;        case $1 in
+ 510&nbsp;            *.tar.bz2)   tar xvjf $1     ;;
+ 511&nbsp;            *.tar.gz)    tar xvzf $1     ;;
+ 512&nbsp;            *.bz2)       bunzip2 $1      ;;
+ 513&nbsp;            *.rar)       unrar x $1      ;;
+ 514&nbsp;            *.gz)        gunzip $1       ;;
+ 515&nbsp;            *.tar)       tar xvf $1      ;;
+ 516&nbsp;            *.tbz2)      tar xvjf $1     ;;
+ 517&nbsp;            *.tgz)       tar xvzf $1     ;;
+ 518&nbsp;            *.zip)       unzip $1        ;;
+ 519&nbsp;            *.Z)         uncompress $1   ;;
+ 520&nbsp;            *.7z)        7z x $1         ;;
+ 521&nbsp;            *)           echo "'$1' cannot be extracted via &#62;extract&#60;" ;;
+ 522&nbsp;        esac
+ 523&nbsp;    else
+ 524&nbsp;        echo "'$1' is not a valid file!"
+ 525&nbsp;    fi
+ 526&nbsp;}
+ 527&nbsp;
+ 528&nbsp;
+ 529&nbsp;# Creates an archive (*.tar.gz) from given directory.
+ 530&nbsp;function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+ 531&nbsp;
+ 532&nbsp;# Create a ZIP archive of a file or folder.
+ 533&nbsp;function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+ 534&nbsp;
+ 535&nbsp;# Make your directories and files access rights sane.
+ 536&nbsp;function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
+ 537&nbsp;
+ 538&nbsp;#-------------------------------------------------------------
+ 539&nbsp;# Process/system related functions:
+ 540&nbsp;#-------------------------------------------------------------
+ 541&nbsp;
+ 542&nbsp;
+ 543&nbsp;function my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
+ 544&nbsp;function pp() { my_ps f | awk '!/awk/ &#38;&#38; $0~var' var=${1:-".*"} ; }
+ 545&nbsp;
+ 546&nbsp;
+ 547&nbsp;function killps()   # kill by process name
+ 548&nbsp;{
+ 549&nbsp;    local pid pname sig="-TERM"   # default signal
+ 550&nbsp;    if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+ 551&nbsp;        echo "Usage: killps [-SIGNAL] pattern"
+ 552&nbsp;        return;
+ 553&nbsp;    fi
+ 554&nbsp;    if [ $# = 2 ]; then sig=$1 ; fi
+ 555&nbsp;    for pid in $(my_ps| awk '!/awk/ &#38;&#38; $0~pat { print $1 }' pat=${!#} )
+ 556&nbsp;    do
+ 557&nbsp;        pname=$(my_ps | awk '$1~var { print $5 }' var=$pid )
+ 558&nbsp;        if ask "Kill process $pid &#60;$pname&#62; with signal $sig?"
+ 559&nbsp;            then kill $sig $pid
+ 560&nbsp;        fi
+ 561&nbsp;    done
+ 562&nbsp;}
+ 563&nbsp;
+ 564&nbsp;function mydf()         # Pretty-print of 'df' output.
+ 565&nbsp;{                       # Inspired by 'dfc' utility.
+ 566&nbsp;    for fs ; do
+ 567&nbsp;
+ 568&nbsp;        if [ ! -d $fs ]
+ 569&nbsp;        then
+ 570&nbsp;          echo -e $fs" :No such file or directory" ; continue
+ 571&nbsp;        fi
+ 572&nbsp;
+ 573&nbsp;        local info=( $(command df -P $fs | awk 'END{ print $2,$3,$5 }') )
+ 574&nbsp;        local free=( $(command df -Pkh $fs | awk 'END{ print $4 }') )
+ 575&nbsp;        local nbstars=$(( 20 * ${info[1]} / ${info[0]} ))
+ 576&nbsp;        local out="["
+ 577&nbsp;        for ((j=0;j&#60;20;j++)); do
+ 578&nbsp;            if [ ${j} -lt ${nbstars} ]; then
+ 579&nbsp;               out=$out"*"
+ 580&nbsp;            else
+ 581&nbsp;               out=$out"-"
+ 582&nbsp;            fi
+ 583&nbsp;        done
+ 584&nbsp;        out=${info[2]}" "$out"] ("$free" free on "$fs")"
+ 585&nbsp;        echo -e $out
+ 586&nbsp;    done
+ 587&nbsp;}
+ 588&nbsp;
+ 589&nbsp;
+ 590&nbsp;function my_ip() # Get IP adress on ethernet.
+ 591&nbsp;{
+ 592&nbsp;    MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
+ 593&nbsp;      sed -e s/addr://)
+ 594&nbsp;    echo ${MY_IP:-"Not connected"}
+ 595&nbsp;}
+ 596&nbsp;
+ 597&nbsp;function ii()   # Get current host related info.
+ 598&nbsp;{
+ 599&nbsp;    echo -e "\nYou are logged on ${BRed}$HOST"
+ 600&nbsp;    echo -e "\n${BRed}Additionnal information:$NC " ; uname -a
+ 601&nbsp;    echo -e "\n${BRed}Users logged on:$NC " ; w -hs |
+ 602&nbsp;             cut -d " " -f1 | sort | uniq
+ 603&nbsp;    echo -e "\n${BRed}Current date :$NC " ; date
+ 604&nbsp;    echo -e "\n${BRed}Machine stats :$NC " ; uptime
+ 605&nbsp;    echo -e "\n${BRed}Memory stats :$NC " ; free
+ 606&nbsp;    echo -e "\n${BRed}Diskspace :$NC " ; mydf / $HOME
+ 607&nbsp;    echo -e "\n${BRed}Local IP Address :$NC" ; my_ip
+ 608&nbsp;    echo -e "\n${BRed}Open connections :$NC "; netstat -pan --inet;
+ 609&nbsp;    echo
+ 610&nbsp;}
+ 611&nbsp;
+ 612&nbsp;#-------------------------------------------------------------
+ 613&nbsp;# Misc utilities:
+ 614&nbsp;#-------------------------------------------------------------
+ 615&nbsp;
+ 616&nbsp;function repeat()       # Repeat n times command.
+ 617&nbsp;{
+ 618&nbsp;    local i max
+ 619&nbsp;    max=$1; shift;
+ 620&nbsp;    for ((i=1; i &#60;= max ; i++)); do  # --&#62; C-like syntax
+ 621&nbsp;        eval "$@";
+ 622&nbsp;    done
+ 623&nbsp;}
+ 624&nbsp;
+ 625&nbsp;
+ 626&nbsp;function ask()          # See 'killps' for example of use.
+ 627&nbsp;{
+ 628&nbsp;    echo -n "$@" '[y/n] ' ; read ans
+ 629&nbsp;    case "$ans" in
+ 630&nbsp;        y*|Y*) return 0 ;;
+ 631&nbsp;        *) return 1 ;;
+ 632&nbsp;    esac
+ 633&nbsp;}
+ 634&nbsp;
+ 635&nbsp;function corename()   # Get name of app that created a corefile.
+ 636&nbsp;{
+ 637&nbsp;    for file ; do
+ 638&nbsp;        echo -n $file : ; gdb --core=$file --batch | head -1
+ 639&nbsp;    done
+ 640&nbsp;}
+ 641&nbsp;
+ 642&nbsp;
+ 643&nbsp;
+ 644&nbsp;#=========================================================================
+ 645&nbsp;#
+ 646&nbsp;#  PROGRAMMABLE COMPLETION SECTION
+ 647&nbsp;#  Most are taken from the bash 2.05 documentation and from Ian McDonald's
+ 648&nbsp;# 'Bash completion' package (http://www.caliban.org/bash/#completion)
+ 649&nbsp;#  You will in fact need bash more recent then 3.0 for some features.
+ 650&nbsp;#
+ 651&nbsp;#  Note that most linux distributions now provide many completions
+ 652&nbsp;# 'out of the box' - however, you might need to make your own one day,
+ 653&nbsp;#  so I kept those here as examples.
+ 654&nbsp;#=========================================================================
+ 655&nbsp;
+ 656&nbsp;if [ "${BASH_VERSION%.*}" \&#60; "3.0" ]; then
+ 657&nbsp;    echo "You will need to upgrade to version 3.0 for full \
+ 658&nbsp;          programmable completion features"
+ 659&nbsp;    return
+ 660&nbsp;fi
+ 661&nbsp;
+ 662&nbsp;shopt -s extglob        # Necessary.
+ 663&nbsp;
+ 664&nbsp;complete -A hostname   rsh rcp telnet rlogin ftp ping disk
+ 665&nbsp;complete -A export     printenv
+ 666&nbsp;complete -A variable   export local readonly unset
+ 667&nbsp;complete -A enabled    builtin
+ 668&nbsp;complete -A alias      alias unalias
+ 669&nbsp;complete -A function   function
+ 670&nbsp;complete -A user       su mail finger
+ 671&nbsp;
+ 672&nbsp;complete -A helptopic  help     # Currently same as builtins.
+ 673&nbsp;complete -A shopt      shopt
+ 674&nbsp;complete -A stopped -P '%' bg
+ 675&nbsp;complete -A job -P '%'     fg jobs disown
+ 676&nbsp;
+ 677&nbsp;complete -A directory  mkdir rmdir
+ 678&nbsp;complete -A directory   -o default cd
+ 679&nbsp;
+ 680&nbsp;# Compression
+ 681&nbsp;complete -f -o default -X '*.+(zip|ZIP)'  zip
+ 682&nbsp;complete -f -o default -X '!*.+(zip|ZIP)' unzip
+ 683&nbsp;complete -f -o default -X '*.+(z|Z)'      compress
+ 684&nbsp;complete -f -o default -X '!*.+(z|Z)'     uncompress
+ 685&nbsp;complete -f -o default -X '*.+(gz|GZ)'    gzip
+ 686&nbsp;complete -f -o default -X '!*.+(gz|GZ)'   gunzip
+ 687&nbsp;complete -f -o default -X '*.+(bz2|BZ2)'  bzip2
+ 688&nbsp;complete -f -o default -X '!*.+(bz2|BZ2)' bunzip2
+ 689&nbsp;complete -f -o default -X '!*.+(zip|ZIP|z|Z|gz|GZ|bz2|BZ2)' extract
+ 690&nbsp;
+ 691&nbsp;
+ 692&nbsp;# Documents - Postscript,pdf,dvi.....
+ 693&nbsp;complete -f -o default -X '!*.+(ps|PS)'  gs ghostview ps2pdf ps2ascii
+ 694&nbsp;complete -f -o default -X \
+ 695&nbsp;'!*.+(dvi|DVI)' dvips dvipdf xdvi dviselect dvitype
+ 696&nbsp;complete -f -o default -X '!*.+(pdf|PDF)' acroread pdf2ps
+ 697&nbsp;complete -f -o default -X '!*.@(@(?(e)ps|?(E)PS|pdf|PDF)?\
+ 698&nbsp;(.gz|.GZ|.bz2|.BZ2|.Z))' gv ggv
+ 699&nbsp;complete -f -o default -X '!*.texi*' makeinfo texi2dvi texi2html texi2pdf
+ 700&nbsp;complete -f -o default -X '!*.tex' tex latex slitex
+ 701&nbsp;complete -f -o default -X '!*.lyx' lyx
+ 702&nbsp;complete -f -o default -X '!*.+(htm*|HTM*)' lynx html2ps
+ 703&nbsp;complete -f -o default -X \
+ 704&nbsp;'!*.+(doc|DOC|xls|XLS|ppt|PPT|sx?|SX?|csv|CSV|od?|OD?|ott|OTT)' soffice
+ 705&nbsp;
+ 706&nbsp;# Multimedia
+ 707&nbsp;complete -f -o default -X \
+ 708&nbsp;'!*.+(gif|GIF|jp*g|JP*G|bmp|BMP|xpm|XPM|png|PNG)' xv gimp ee gqview
+ 709&nbsp;complete -f -o default -X '!*.+(mp3|MP3)' mpg123 mpg321
+ 710&nbsp;complete -f -o default -X '!*.+(ogg|OGG)' ogg123
+ 711&nbsp;complete -f -o default -X \
+ 712&nbsp;'!*.@(mp[23]|MP[23]|ogg|OGG|wav|WAV|pls|\
+ 713&nbsp;m3u|xm|mod|s[3t]m|it|mtm|ult|flac)' xmms
+ 714&nbsp;complete -f -o default -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|\
+ 715&nbsp;asf|vob|VOB|bin|dat|vcd|ps|pes|fli|viv|rm|ram|yuv|mov|MOV|qt|\
+ 716&nbsp;QT|wmv|mp3|MP3|ogg|OGG|ogm|OGM|mp4|MP4|wav|WAV|asx|ASX)' xine
+ 717&nbsp;
+ 718&nbsp;
+ 719&nbsp;
+ 720&nbsp;complete -f -o default -X '!*.pl'  perl perl5
+ 721&nbsp;
+ 722&nbsp;
+ 723&nbsp;#  This is a 'universal' completion function - it works when commands have
+ 724&nbsp;#+ a so-called 'long options' mode , ie: 'ls --all' instead of 'ls -a'
+ 725&nbsp;#  Needs the '-o' option of grep
+ 726&nbsp;#+ (try the commented-out version if not available).
+ 727&nbsp;
+ 728&nbsp;#  First, remove '=' from completion word separators
+ 729&nbsp;#+ (this will allow completions like 'ls --color=auto' to work correctly).
+ 730&nbsp;
+ 731&nbsp;COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+ 732&nbsp;
+ 733&nbsp;
+ 734&nbsp;_get_longopts()
+ 735&nbsp;{
+ 736&nbsp;  #$1 --help | sed  -e '/--/!d' -e 's/.*--\([^[:space:].,]*\).*/--\1/'| \
+ 737&nbsp;  #grep ^"$2" |sort -u ;
+ 738&nbsp;    $1 --help | grep -o -e "--[^[:space:].,]*" | grep -e "$2" |sort -u
+ 739&nbsp;}
+ 740&nbsp;
+ 741&nbsp;_longopts()
+ 742&nbsp;{
+ 743&nbsp;    local cur
+ 744&nbsp;    cur=${COMP_WORDS[COMP_CWORD]}
+ 745&nbsp;
+ 746&nbsp;    case "${cur:-*}" in
+ 747&nbsp;       -*)      ;;
+ 748&nbsp;        *)      return ;;
+ 749&nbsp;    esac
+ 750&nbsp;
+ 751&nbsp;    case "$1" in
+ 752&nbsp;       \~*)     eval cmd="$1" ;;
+ 753&nbsp;         *)     cmd="$1" ;;
+ 754&nbsp;    esac
+ 755&nbsp;    COMPREPLY=( $(_get_longopts ${1} ${cur} ) )
+ 756&nbsp;}
+ 757&nbsp;complete  -o default -F _longopts configure bash
+ 758&nbsp;complete  -o default -F _longopts wget id info a2ps ls recode
+ 759&nbsp;
+ 760&nbsp;_tar()
+ 761&nbsp;{
+ 762&nbsp;    local cur ext regex tar untar
+ 763&nbsp;
+ 764&nbsp;    COMPREPLY=()
+ 765&nbsp;    cur=${COMP_WORDS[COMP_CWORD]}
+ 766&nbsp;
+ 767&nbsp;    # If we want an option, return the possible long options.
+ 768&nbsp;    case "$cur" in
+ 769&nbsp;        -*)     COMPREPLY=( $(_get_longopts $1 $cur ) ); return 0;;
+ 770&nbsp;    esac
+ 771&nbsp;
+ 772&nbsp;    if [ $COMP_CWORD -eq 1 ]; then
+ 773&nbsp;        COMPREPLY=( $( compgen -W 'c t x u r d A' -- $cur ) )
+ 774&nbsp;        return 0
+ 775&nbsp;    fi
+ 776&nbsp;
+ 777&nbsp;    case "${COMP_WORDS[1]}" in
+ 778&nbsp;        ?(-)c*f)
+ 779&nbsp;            COMPREPLY=( $( compgen -f $cur ) )
+ 780&nbsp;            return 0
+ 781&nbsp;            ;;
+ 782&nbsp;        +([^Izjy])f)
+ 783&nbsp;            ext='tar'
+ 784&nbsp;            regex=$ext
+ 785&nbsp;            ;;
+ 786&nbsp;        *z*f)
+ 787&nbsp;            ext='tar.gz'
+ 788&nbsp;            regex='t\(ar\.\)\(gz\|Z\)'
+ 789&nbsp;            ;;
+ 790&nbsp;        *[Ijy]*f)
+ 791&nbsp;            ext='t?(ar.)bz?(2)'
+ 792&nbsp;            regex='t\(ar\.\)bz2\?'
+ 793&nbsp;            ;;
+ 794&nbsp;        *)
+ 795&nbsp;            COMPREPLY=( $( compgen -f $cur ) )
+ 796&nbsp;            return 0
+ 797&nbsp;            ;;
+ 798&nbsp;
+ 799&nbsp;    esac
+ 800&nbsp;
+ 801&nbsp;    if [[ "$COMP_LINE" == tar*.$ext' '* ]]; then
+ 802&nbsp;        # Complete on files in tar file.
+ 803&nbsp;        #
+ 804&nbsp;        # Get name of tar file from command line.
+ 805&nbsp;        tar=$( echo "$COMP_LINE" | \
+ 806&nbsp;                        sed -e 's|^.* \([^ ]*'$regex'\) .*$|\1|' )
+ 807&nbsp;        # Devise how to untar and list it.
+ 808&nbsp;        untar=t${COMP_WORDS[1]//[^Izjyf]/}
+ 809&nbsp;
+ 810&nbsp;        COMPREPLY=( $( compgen -W "$( echo $( tar $untar $tar \
+ 811&nbsp;                                2&#62;/dev/null ) )" -- "$cur" ) )
+ 812&nbsp;        return 0
+ 813&nbsp;
+ 814&nbsp;    else
+ 815&nbsp;        # File completion on relevant files.
+ 816&nbsp;        COMPREPLY=( $( compgen -G $cur\*.$ext ) )
+ 817&nbsp;
+ 818&nbsp;    fi
+ 819&nbsp;
+ 820&nbsp;    return 0
+ 821&nbsp;
+ 822&nbsp;}
+ 823&nbsp;
+ 824&nbsp;complete -F _tar -o default tar
+ 825&nbsp;
+ 826&nbsp;_make()
+ 827&nbsp;{
+ 828&nbsp;    local mdef makef makef_dir="." makef_inc gcmd cur prev i;
+ 829&nbsp;    COMPREPLY=();
+ 830&nbsp;    cur=${COMP_WORDS[COMP_CWORD]};
+ 831&nbsp;    prev=${COMP_WORDS[COMP_CWORD-1]};
+ 832&nbsp;    case "$prev" in
+ 833&nbsp;        -*f)
+ 834&nbsp;            COMPREPLY=($(compgen -f $cur ));
+ 835&nbsp;            return 0
+ 836&nbsp;            ;;
+ 837&nbsp;    esac;
+ 838&nbsp;    case "$cur" in
+ 839&nbsp;        -*)
+ 840&nbsp;            COMPREPLY=($(_get_longopts $1 $cur ));
+ 841&nbsp;            return 0
+ 842&nbsp;            ;;
+ 843&nbsp;    esac;
+ 844&nbsp;
+ 845&nbsp;    # ... make reads
+ 846&nbsp;    #          GNUmakefile,
+ 847&nbsp;    #     then makefile
+ 848&nbsp;    #     then Makefile ...
+ 849&nbsp;    if [ -f ${makef_dir}/GNUmakefile ]; then
+ 850&nbsp;        makef=${makef_dir}/GNUmakefile
+ 851&nbsp;    elif [ -f ${makef_dir}/makefile ]; then
+ 852&nbsp;        makef=${makef_dir}/makefile
+ 853&nbsp;    elif [ -f ${makef_dir}/Makefile ]; then
+ 854&nbsp;        makef=${makef_dir}/Makefile
+ 855&nbsp;    else
+ 856&nbsp;       makef=${makef_dir}/*.mk         # Local convention.
+ 857&nbsp;    fi
+ 858&nbsp;
+ 859&nbsp;
+ 860&nbsp;    #  Before we scan for targets, see if a Makefile name was
+ 861&nbsp;    #+ specified with -f.
+ 862&nbsp;    for (( i=0; i &#60; ${#COMP_WORDS[@]}; i++ )); do
+ 863&nbsp;        if [[ ${COMP_WORDS[i]} == -f ]]; then
+ 864&nbsp;            # eval for tilde expansion
+ 865&nbsp;            eval makef=${COMP_WORDS[i+1]}
+ 866&nbsp;            break
+ 867&nbsp;        fi
+ 868&nbsp;    done
+ 869&nbsp;    [ ! -f $makef ] &#38;&#38; return 0
+ 870&nbsp;
+ 871&nbsp;    # Deal with included Makefiles.
+ 872&nbsp;    makef_inc=$( grep -E '^-?include' $makef |
+ 873&nbsp;                 sed -e "s,^.* ,"$makef_dir"/," )
+ 874&nbsp;    for file in $makef_inc; do
+ 875&nbsp;        [ -f $file ] &#38;&#38; makef="$makef $file"
+ 876&nbsp;    done
+ 877&nbsp;
+ 878&nbsp;
+ 879&nbsp;    #  If we have a partial word to complete, restrict completions
+ 880&nbsp;    #+ to matches of that word.
+ 881&nbsp;    if [ -n "$cur" ]; then gcmd='grep "^$cur"' ; else gcmd=cat ; fi
+ 882&nbsp;
+ 883&nbsp;    COMPREPLY=( $( awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ \
+ 884&nbsp;                               {split($1,A,/ /);for(i in A)print A[i]}' \
+ 885&nbsp;                                $makef 2&#62;/dev/null | eval $gcmd  ))
+ 886&nbsp;
+ 887&nbsp;}
+ 888&nbsp;
+ 889&nbsp;complete -F _make -X '+($*|*.[cho])' make gmake pmake
+ 890&nbsp;
+ 891&nbsp;
+ 892&nbsp;
+ 893&nbsp;
+ 894&nbsp;_killall()
+ 895&nbsp;{
+ 896&nbsp;    local cur prev
+ 897&nbsp;    COMPREPLY=()
+ 898&nbsp;    cur=${COMP_WORDS[COMP_CWORD]}
+ 899&nbsp;
+ 900&nbsp;    #  Get a list of processes (the first sed evaluation
+ 901&nbsp;    #+ takes care of swapped out processes, the second
+ 902&nbsp;    #+ takes care of getting the basename of the process).
+ 903&nbsp;    COMPREPLY=( $( ps -u $USER -o comm  | \
+ 904&nbsp;        sed -e '1,1d' -e 's#[]\[]##g' -e 's#^.*/##'| \
+ 905&nbsp;        awk '{if ($0 ~ /^'$cur'/) print $0}' ))
+ 906&nbsp;
+ 907&nbsp;    return 0
+ 908&nbsp;}
+ 909&nbsp;
+ 910&nbsp;complete -F _killall killall killps
+ 911&nbsp;
+ 912&nbsp;
+ 913&nbsp;
+ 914&nbsp;# Local Variables:
+ 915&nbsp;# mode:shell-script
+ 916&nbsp;# sh-shell:bash
+ 917&nbsp;# End:</PRE
+></TD
+></TR
+></TABLE
+><HR></DIV
+><P
+>And, here is a snippet from Andrzej Szelachowski's instructive
+        <TT
+CLASS="FILENAME"
+>.bash_profile</TT
+> file.</P
+><DIV
+CLASS="EXAMPLE"
+><HR><A
+NAME="BASHPROF"
+></A
+><P
+><B
+>Example M-2. <TT
+CLASS="FILENAME"
+>.bash_profile</TT
+> file</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>   1&nbsp;# From Andrzej Szelachowski's ~/.bash_profile:
+   2&nbsp;
+   3&nbsp;
+   4&nbsp;#  Note that a variable may require special treatment
+   5&nbsp;#+ if it will be exported.
+   6&nbsp;
+   7&nbsp;DARKGRAY='\e[1;30m'
+   8&nbsp;LIGHTRED='\e[1;31m'
+   9&nbsp;GREEN='\e[32m'
+  10&nbsp;YELLOW='\e[1;33m'
+  11&nbsp;LIGHTBLUE='\e[1;34m'
+  12&nbsp;NC='\e[m'
+  13&nbsp;
+  14&nbsp;PCT="\`if [[ \$EUID -eq 0 ]]; then T='$LIGHTRED' ; else T='$LIGHTBLUE'; fi; 
+  15&nbsp;echo \$T \`"
+  16&nbsp;
+  17&nbsp;#  For "literal" command substitution to be assigned to a variable,
+  18&nbsp;#+ use escapes and double quotes:
+  19&nbsp;#+       PCT="\` ... \`" . . .
+  20&nbsp;#  Otherwise, the value of PCT variable is assigned only once,
+  21&nbsp;#+ when the variable is exported/read from .bash_profile,
+  22&nbsp;#+ and it will not change afterwards even if the user ID changes.
+  23&nbsp;
+  24&nbsp;
+  25&nbsp;PS1="\n$GREEN[\w] \n$DARKGRAY($PCT\t$DARKGRAY)-($PCT\u$DARKGRAY)-($PCT\!
+  26&nbsp;$DARKGRAY)$YELLOW-&#62; $NC"
+  27&nbsp;
+  28&nbsp;#  Escape a variables whose value changes:
+  29&nbsp;#        if [[ \$EUID -eq 0 ]],
+  30&nbsp;#  Otherwise the value of the EUID variable will be assigned only once,
+  31&nbsp;#+ as above.
+  32&nbsp;
+  33&nbsp;#  When a variable is assigned, it should be called escaped:
+  34&nbsp;#+       echo \$T,
+  35&nbsp;#  Otherwise the value of the T variable is taken from the moment the PCT 
+  36&nbsp;#+ variable is exported/read from .bash_profile.
+  37&nbsp;#  So, in this example it would be null.
+  38&nbsp;
+  39&nbsp;#  When a variable's value contains a semicolon it should be strong quoted:
+  40&nbsp;#        T='$LIGHTRED',
+  41&nbsp;#  Otherwise, the semicolon will be interpreted as a command separator.
+  42&nbsp;
+  43&nbsp;
+  44&nbsp;#  Variables PCT and PS1 can be merged into a new PS1 variable:
+  45&nbsp;
+  46&nbsp;PS1="\`if [[ \$EUID -eq 0 ]]; then PCT='$LIGHTRED';
+  47&nbsp;else PCT='$LIGHTBLUE'; fi; 
+  48&nbsp;echo '\n$GREEN[\w] \n$DARKGRAY('\$PCT'\t$DARKGRAY)-\
+  49&nbsp;('\$PCT'\u$DARKGRAY)-('\$PCT'\!$DARKGRAY)$YELLOW-&#62; $NC'\`"
+  50&nbsp;
+  51&nbsp;# The trick is to use strong quoting for parts of old PS1 variable.</PRE
+></TD
+></TR
+></TABLE
+><HR></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="histcommands.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="dosbatch.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>History Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Converting DOS Batch Files to Shell Scripts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

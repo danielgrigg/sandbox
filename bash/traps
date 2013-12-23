@@ -1,0 +1,14 @@
+#!/bin/sh
+
+tf=/tmp/tf.$$
+
+cleanup() {
+  rm -f $tf
+}
+
+trap "cleanup" EXIT
+
+touch $tf
+echo "$tf created"
+sleep 10 #Ctrl-C works too
+# temp removed
