@@ -1,0 +1,1208 @@
+name: _amavisd
+password: *
+uid: 83
+gid: 83
+dir: /var/virusmails
+shell: /usr/bin/false
+gecos: AMaViS Daemon
+
+name: _appowner
+password: *
+uid: 87
+gid: 87
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Application Owner
+
+name: _appserver
+password: *
+uid: 79
+gid: 79
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Application Server
+
+name: _ard
+password: *
+uid: 67
+gid: 67
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Apple Remote Desktop
+
+name: _atsserver
+password: *
+uid: 97
+gid: 97
+dir: /var/empty
+shell: /usr/bin/false
+gecos: ATS Server
+
+name: _avbdeviced
+password: *
+uid: 229
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Ethernet AVB Device Daemon
+
+name: _calendar
+password: *
+uid: 93
+gid: 93
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Calendar
+
+name: _ces
+password: *
+uid: 32
+gid: 32
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Certificate Enrollment Service
+
+name: _clamav
+password: *
+uid: 82
+gid: 82
+dir: /var/virusmails
+shell: /usr/bin/false
+gecos: ClamAV Daemon
+
+name: _coreaudiod
+password: *
+uid: 202
+gid: 202
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Core Audio Daemon
+
+name: _cvmsroot
+password: *
+uid: 212
+gid: 212
+dir: /var/empty
+shell: /usr/bin/false
+gecos: CVMS Root
+
+name: _cvs
+password: *
+uid: 72
+gid: 72
+dir: /var/empty
+shell: /usr/bin/false
+gecos: CVS Server
+
+name: _cyrus
+password: *
+uid: 77
+gid: 6
+dir: /var/imap
+shell: /usr/bin/false
+gecos: Cyrus Administrator
+
+name: _devdocs
+password: *
+uid: 59
+gid: 59
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Developer Documentation
+
+name: _devicemgr
+password: *
+uid: 220
+gid: 220
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Device Management Server
+
+name: _dovecot
+password: *
+uid: 214
+gid: 6
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Dovecot Administrator
+
+name: _dovenull
+password: *
+uid: 227
+gid: 227
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Dovecot Authentication
+
+name: _dpaudio
+password: *
+uid: 215
+gid: 215
+dir: /var/empty
+shell: /usr/bin/false
+gecos: DP Audio
+
+name: _eppc
+password: *
+uid: 71
+gid: 71
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Apple Events User
+
+name: _ftp
+password: *
+uid: 98
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: FTP Daemon
+
+name: _installassistant
+password: *
+uid: 25
+gid: 25
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Install Assistant
+
+name: _installer
+password: *
+uid: 96
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Installer
+
+name: _jabber
+password: *
+uid: 84
+gid: 84
+dir: /var/jabberd/ChatHome
+shell: /usr/bin/false
+gecos: Jabber XMPP Server
+
+name: _kadmin_admin
+password: *
+uid: 218
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Admin Service
+
+name: _kadmin_changepw
+password: *
+uid: 219
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Change Password Service
+
+name: _krb_anonymous
+password: *
+uid: 234
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Anonymous
+
+name: _krb_changepw
+password: *
+uid: 232
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Change Password Service
+
+name: _krb_kadmin
+password: *
+uid: 231
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Admin Service
+
+name: _krb_kerberos
+password: *
+uid: 233
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos
+
+name: _krb_krbtgt
+password: *
+uid: 230
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Ticket Granting Ticket
+
+name: _krbtgt
+password: *
+uid: 217
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Ticket Granting Ticket
+
+name: _lda
+password: *
+uid: 211
+gid: 211
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Local Delivery Agent
+
+name: _locationd
+password: *
+uid: 205
+gid: 205
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Location Daemon
+
+name: _lp
+password: *
+uid: 26
+gid: 26
+dir: /var/spool/cups
+shell: /usr/bin/false
+gecos: Printing Services
+
+name: _mailman
+password: *
+uid: 78
+gid: 78
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Mailman List Server
+
+name: _mcxalr
+password: *
+uid: 54
+gid: 54
+dir: /var/empty
+shell: /usr/bin/false
+gecos: MCX AppLaunch
+
+name: _mdnsresponder
+password: *
+uid: 65
+gid: 65
+dir: /var/empty
+shell: /usr/bin/false
+gecos: mDNSResponder
+
+name: _mysql
+password: *
+uid: 74
+gid: 74
+dir: /var/empty
+shell: /usr/bin/false
+gecos: MySQL Server
+
+name: _netbios
+password: *
+uid: 222
+gid: 222
+dir: /var/empty
+shell: /usr/bin/false
+gecos: NetBIOS
+
+name: _netstatistics
+password: *
+uid: 228
+gid: 228
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Network Statistics Daemon
+
+name: _networkd
+password: *
+uid: 24
+gid: 24
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Network Services
+
+name: _pcastagent
+password: *
+uid: 55
+gid: 55
+dir: /var/pcast/agent
+shell: /usr/bin/false
+gecos: Podcast Producer Agent
+
+name: _pcastlibrary
+password: *
+uid: 225
+gid: 225
+dir: /Library/Server/PodcastLibrary
+shell: /usr/bin/false
+gecos: Podcast Library Server
+
+name: _pcastserver
+password: *
+uid: 56
+gid: 56
+dir: /var/pcast/server
+shell: /usr/bin/false
+gecos: Podcast Producer Server
+
+name: _postfix
+password: *
+uid: 27
+gid: 27
+dir: /var/spool/postfix
+shell: /usr/bin/false
+gecos: Postfix Mail Server
+
+name: _postgres
+password: *
+uid: 216
+gid: 216
+dir: /var/empty
+shell: /usr/bin/false
+gecos: PostgreSQL Server
+
+name: _qtss
+password: *
+uid: 76
+gid: 76
+dir: /var/empty
+shell: /usr/bin/false
+gecos: QuickTime Streaming Server
+
+name: _sandbox
+password: *
+uid: 60
+gid: 60
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Seatbelt
+
+name: _screensaver
+password: *
+uid: 203
+gid: 203
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Screensaver
+
+name: _scsd
+password: *
+uid: 31
+gid: 31
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Service Configuration Service
+
+name: _securityagent
+password: *
+uid: 92
+gid: 92
+dir: /var/empty
+shell: /usr/bin/false
+gecos: SecurityAgent
+
+name: _serialnumberd
+password: *
+uid: 58
+gid: 58
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Serial Number Daemon
+
+name: _softwareupdate
+password: *
+uid: 200
+gid: 200
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Software Update Service
+
+name: _spotlight
+password: *
+uid: 89
+gid: 89
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Spotlight
+
+name: _sshd
+password: *
+uid: 75
+gid: 75
+dir: /var/empty
+shell: /usr/bin/false
+gecos: sshd Privilege separation
+
+name: _svn
+password: *
+uid: 73
+gid: 73
+dir: /var/empty
+shell: /usr/bin/false
+gecos: SVN Server
+
+name: _taskgated
+password: *
+uid: 13
+gid: 13
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Task Gate Daemon
+
+name: _teamsserver
+password: *
+uid: 94
+gid: 94
+dir: /var/teamsserver
+shell: /usr/bin/false
+gecos: TeamsServer
+
+name: _timezone
+password: *
+uid: 210
+gid: 210
+dir: /var/empty
+shell: /usr/bin/false
+gecos: AutoTimeZoneDaemon
+
+name: _tokend
+password: *
+uid: 91
+gid: 91
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Token Daemon
+
+name: _trustevaluationagent
+password: *
+uid: 208
+gid: 208
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Trust Evaluation Agent
+
+name: _unknown
+password: *
+uid: 99
+gid: 99
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Unknown User
+
+name: _update_sharing
+password: *
+uid: 95
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Update Sharing
+
+name: _usbmuxd
+password: *
+uid: 213
+gid: 213
+dir: /var/db/lockdown
+shell: /usr/bin/false
+gecos: iPhone OS Device Helper
+
+name: _uucp
+password: *
+uid: 4
+gid: 4
+dir: /var/spool/uucp
+shell: /usr/sbin/uucico
+gecos: Unix to Unix Copy Protocol
+
+name: _warmd
+password: *
+uid: 224
+gid: 224
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Warm Daemon
+
+name: _webauthserver
+password: *
+uid: 221
+gid: 221
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Web Auth Server
+
+name: _windowserver
+password: *
+uid: 88
+gid: 88
+dir: /var/empty
+shell: /usr/bin/false
+gecos: WindowServer
+
+name: _www
+password: *
+uid: 70
+gid: 70
+dir: /Library/WebServer
+shell: /usr/bin/false
+gecos: World Wide Web Server
+
+name: _xgridagent
+password: *
+uid: 86
+gid: 86
+dir: /var/xgrid/agent
+shell: /usr/bin/false
+gecos: Xgrid Agent
+
+name: _xgridcontroller
+password: *
+uid: 85
+gid: 85
+dir: /var/xgrid/controller
+shell: /usr/bin/false
+gecos: Xgrid Controller
+
+name: daemon
+password: *
+uid: 1
+gid: 1
+dir: /var/root
+shell: /usr/bin/false
+gecos: System Services
+
+name: daniel
+password: ********
+uid: 501
+gid: 20
+dir: /Users/daniel
+shell: /bin/bash
+gecos: Daniel Grigg
+
+name: macports
+password: *
+uid: 503
+gid: 501
+dir: /Users/daniel/local/var/macports/home
+shell: /usr/bin/false
+gecos: MacPorts
+
+name: messagebus
+password: *
+uid: 500
+gid: 500
+dir: /dev/null
+shell: /dev/null
+gecos: Message Bus
+
+name: nobody
+password: *
+uid: -2
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Unprivileged User
+
+name: postgres
+password: ********
+uid: 502
+gid: 20
+dir: /Users/postgres
+shell: /bin/bash
+gecos: postgres admin
+
+name: root
+password: ********
+uid: 0
+gid: 0
+dir: /var/root
+shell: /bin/sh
+gecos: System Administrator
+
+name: nobody
+password: *
+uid: -2
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Unprivileged User
+
+name: root
+password: *
+uid: 0
+gid: 0
+dir: /var/root
+shell: /bin/sh
+gecos: System Administrator
+
+name: daemon
+password: *
+uid: 1
+gid: 1
+dir: /var/root
+shell: /usr/bin/false
+gecos: System Services
+
+name: _uucp
+password: *
+uid: 4
+gid: 4
+dir: /var/spool/uucp
+shell: /usr/sbin/uucico
+gecos: Unix to Unix Copy Protocol
+
+name: _networkd
+password: *
+uid: 24
+gid: 24
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Network Services
+
+name: _installassistant
+password: *
+uid: 25
+gid: 25
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Install Assistant
+
+name: _lp
+password: *
+uid: 26
+gid: 26
+dir: /var/spool/cups
+shell: /usr/bin/false
+gecos: Printing Services
+
+name: _postfix
+password: *
+uid: 27
+gid: 27
+dir: /var/spool/postfix
+shell: /usr/bin/false
+gecos: Postfix Mail Server
+
+name: _scsd
+password: *
+uid: 31
+gid: 31
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Service Configuration Service
+
+name: _ces
+password: *
+uid: 32
+gid: 32
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Certificate Enrollment Service
+
+name: _mcxalr
+password: *
+uid: 54
+gid: 54
+dir: /var/empty
+shell: /usr/bin/false
+gecos: MCX AppLaunch
+
+name: _pcastagent
+password: *
+uid: 55
+gid: 55
+dir: /var/pcast/agent
+shell: /usr/bin/false
+gecos: Podcast Producer Agent
+
+name: _pcastserver
+password: *
+uid: 56
+gid: 56
+dir: /var/pcast/server
+shell: /usr/bin/false
+gecos: Podcast Producer Server
+
+name: _serialnumberd
+password: *
+uid: 58
+gid: 58
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Serial Number Daemon
+
+name: _devdocs
+password: *
+uid: 59
+gid: 59
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Developer Documentation
+
+name: _sandbox
+password: *
+uid: 60
+gid: 60
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Seatbelt
+
+name: _mdnsresponder
+password: *
+uid: 65
+gid: 65
+dir: /var/empty
+shell: /usr/bin/false
+gecos: mDNSResponder
+
+name: _ard
+password: *
+uid: 67
+gid: 67
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Apple Remote Desktop
+
+name: _www
+password: *
+uid: 70
+gid: 70
+dir: /Library/WebServer
+shell: /usr/bin/false
+gecos: World Wide Web Server
+
+name: _eppc
+password: *
+uid: 71
+gid: 71
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Apple Events User
+
+name: _cvs
+password: *
+uid: 72
+gid: 72
+dir: /var/empty
+shell: /usr/bin/false
+gecos: CVS Server
+
+name: _svn
+password: *
+uid: 73
+gid: 73
+dir: /var/empty
+shell: /usr/bin/false
+gecos: SVN Server
+
+name: _mysql
+password: *
+uid: 74
+gid: 74
+dir: /var/empty
+shell: /usr/bin/false
+gecos: MySQL Server
+
+name: _sshd
+password: *
+uid: 75
+gid: 75
+dir: /var/empty
+shell: /usr/bin/false
+gecos: sshd Privilege separation
+
+name: _qtss
+password: *
+uid: 76
+gid: 76
+dir: /var/empty
+shell: /usr/bin/false
+gecos: QuickTime Streaming Server
+
+name: _cyrus
+password: *
+uid: 77
+gid: 6
+dir: /var/imap
+shell: /usr/bin/false
+gecos: Cyrus Administrator
+
+name: _mailman
+password: *
+uid: 78
+gid: 78
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Mailman List Server
+
+name: _appserver
+password: *
+uid: 79
+gid: 79
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Application Server
+
+name: _clamav
+password: *
+uid: 82
+gid: 82
+dir: /var/virusmails
+shell: /usr/bin/false
+gecos: ClamAV Daemon
+
+name: _amavisd
+password: *
+uid: 83
+gid: 83
+dir: /var/virusmails
+shell: /usr/bin/false
+gecos: AMaViS Daemon
+
+name: _jabber
+password: *
+uid: 84
+gid: 84
+dir: /var/jabberd/ChatHome
+shell: /usr/bin/false
+gecos: Jabber XMPP Server
+
+name: _xgridcontroller
+password: *
+uid: 85
+gid: 85
+dir: /var/xgrid/controller
+shell: /usr/bin/false
+gecos: Xgrid Controller
+
+name: _xgridagent
+password: *
+uid: 86
+gid: 86
+dir: /var/xgrid/agent
+shell: /usr/bin/false
+gecos: Xgrid Agent
+
+name: _appowner
+password: *
+uid: 87
+gid: 87
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Application Owner
+
+name: _windowserver
+password: *
+uid: 88
+gid: 88
+dir: /var/empty
+shell: /usr/bin/false
+gecos: WindowServer
+
+name: _spotlight
+password: *
+uid: 89
+gid: 89
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Spotlight
+
+name: _tokend
+password: *
+uid: 91
+gid: 91
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Token Daemon
+
+name: _securityagent
+password: *
+uid: 92
+gid: 92
+dir: /var/empty
+shell: /usr/bin/false
+gecos: SecurityAgent
+
+name: _calendar
+password: *
+uid: 93
+gid: 93
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Calendar
+
+name: _teamsserver
+password: *
+uid: 94
+gid: 94
+dir: /var/teamsserver
+shell: /usr/bin/false
+gecos: TeamsServer
+
+name: _update_sharing
+password: *
+uid: 95
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Update Sharing
+
+name: _installer
+password: *
+uid: 96
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Installer
+
+name: _atsserver
+password: *
+uid: 97
+gid: 97
+dir: /var/empty
+shell: /usr/bin/false
+gecos: ATS Server
+
+name: _ftp
+password: *
+uid: 98
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: FTP Daemon
+
+name: _unknown
+password: *
+uid: 99
+gid: 99
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Unknown User
+
+name: _softwareupdate
+password: *
+uid: 200
+gid: 200
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Software Update Service
+
+name: _coreaudiod
+password: *
+uid: 202
+gid: 202
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Core Audio Daemon
+
+name: _screensaver
+password: *
+uid: 203
+gid: 203
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Screensaver
+
+name: _locationd
+password: *
+uid: 205
+gid: 205
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Location Daemon
+
+name: _trustevaluationagent
+password: *
+uid: 208
+gid: 208
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Trust Evaluation Agent
+
+name: _timezone
+password: *
+uid: 210
+gid: 210
+dir: /var/empty
+shell: /usr/bin/false
+gecos: AutoTimeZoneDaemon
+
+name: _lda
+password: *
+uid: 211
+gid: 211
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Local Delivery Agent
+
+name: _cvmsroot
+password: *
+uid: 212
+gid: 212
+dir: /var/empty
+shell: /usr/bin/false
+gecos: CVMS Root
+
+name: _usbmuxd
+password: *
+uid: 213
+gid: 213
+dir: /var/db/lockdown
+shell: /usr/bin/false
+gecos: iPhone OS Device Helper
+
+name: _dovecot
+password: *
+uid: 214
+gid: 6
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Dovecot Administrator
+
+name: _dpaudio
+password: *
+uid: 215
+gid: 215
+dir: /var/empty
+shell: /usr/bin/false
+gecos: DP Audio
+
+name: _postgres
+password: *
+uid: 216
+gid: 216
+dir: /var/empty
+shell: /usr/bin/false
+gecos: PostgreSQL Server
+
+name: _krbtgt
+password: *
+uid: 217
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Ticket Granting Ticket
+
+name: _kadmin_admin
+password: *
+uid: 218
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Admin Service
+
+name: _kadmin_changepw
+password: *
+uid: 219
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Kerberos Change Password Service
+
+name: _devicemgr
+password: *
+uid: 220
+gid: 220
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Device Management Server
+
+name: _webauthserver
+password: *
+uid: 221
+gid: 221
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Web Auth Server
+
+name: _netbios
+password: *
+uid: 222
+gid: 222
+dir: /var/empty
+shell: /usr/bin/false
+gecos: NetBIOS
+
+name: _warmd
+password: *
+uid: 224
+gid: 224
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Warm Daemon
+
+name: _pcastlibrary
+password: *
+uid: 225
+gid: 225
+dir: /Library/Server/PodcastLibrary
+shell: /usr/bin/false
+gecos: Podcast Library Server
+
+name: _dovenull
+password: *
+uid: 227
+gid: 227
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Dovecot Authentication
+
+name: _netstatistics
+password: *
+uid: 228
+gid: 228
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Network Statistics Daemon
+
+name: _avbdeviced
+password: *
+uid: 229
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Ethernet AVB Device Daemon
+
+name: _krb_krbtgt
+password: *
+uid: 230
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Ticket Granting Ticket
+
+name: _krb_kadmin
+password: *
+uid: 231
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Admin Service
+
+name: _krb_changepw
+password: *
+uid: 232
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Change Password Service
+
+name: _krb_kerberos
+password: *
+uid: 233
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos
+
+name: _krb_anonymous
+password: *
+uid: 234
+gid: -2
+dir: /var/empty
+shell: /usr/bin/false
+gecos: Open Directory Kerberos Anonymous
+

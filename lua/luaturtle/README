@@ -1,0 +1,26 @@
+Implements a simple Turtle-like DSL in LUA against a C++ backend.  The Lua
+files specify turtle commands such as forward, left, etc while the backend
+maintains the turtle's state, interprets commands and renders the results
+to a TGA image.
+
+Installing:
+
+You'll need the Lua package oddly enough and cmake. Afterwards run cmake and make:
+
+cmake .
+make
+
+For other cmake targets, like Xcode, VS, supply cmake with -G, eg for Xcode:
+
+cmake -G Xcode .
+xcodebuild -target luaturtle
+
+Running:
+
+luaturtle reads a single lua script and outputs a TGA image (view with MACOSX preview,
+open, or xdg-open on Ubuntu etc..windows, Photoshop?). 
+
+An example, simple.lua and result, simple.tga is included :)
+
+./luaturtle myluafile.lua
+
