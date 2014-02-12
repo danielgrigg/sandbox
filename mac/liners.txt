@@ -1,3 +1,6 @@
 dscacheutil -q group # query groups
 dscacheutil -q user # query users
 nm foo.dylib # library symbols
+
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister  -dump 
+
