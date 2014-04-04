@@ -1,0 +1,4 @@
+convert -background "rgb(233, 231, 218)" -fill black \ 
+-font media/fonts/FuturaStd-Medium.otf \
+-pointsize 13 label:"ğüşıöçĞÜŞİÖÇ" -size 88x18 \
+media/images/category_images/food-drink/category-top-row/tr_food-drink.png
