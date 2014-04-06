@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
     g->render();
   };
   
-  SDL_iPhoneSetAnimationCallback(window, 20, callback, graphics.get());
+  SDL_iPhoneSetAnimationCallback(window, 12, callback, graphics.get());
   SDL_Event event;
   auto done = false;
   
@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
           break;
       }
     }
-    graphics->render();
+    //graphics->render();
     
   }
   SDL_DestroyWindow(window);
