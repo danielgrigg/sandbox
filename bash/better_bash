@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -o nounset # unset variables are bad mmk
+set -o errexit # exit on error weee
+
+ExtractBashComments() {
+  egrep "^#"
+} 
+  cat myscript.sh | ExtractBashComments | wc 
+comments=$(ExtractBashComments < myscript.sh)
+
+SumLines() {  # iterating over stdin - similar to awk      
+    local sum=0
+    local line=””
+    while read line ; do
+        sum=$((${sum} + ${line}))
+    done
+    echo ${sum}
+} 
+SumLines < data_one_number_per_line.txt 
+log() {  # classic logger 
+   local prefix="[$(date +%Y/%m/%d\ %H:%M:%S)]: "
+   echo "${prefix} $@" >&2
+} 
+log "INFO" "a message"
+
+# download and diff two webpages
+diff <(wget -O - url1) <(wget -O - url2)
+
+# DELIMITER is an arbitrary string
+#command  << MARKER
+#${var}
+#$(cmd)
+#...
+#MARKER
