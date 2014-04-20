@@ -1,6 +1,7 @@
 .lein-cljsbuild-compiler-0/
 target/
 out/
+downloads/
 *.jar
 *.class
 *.out
