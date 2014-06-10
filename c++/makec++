@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+if ARGV.length < 1
+  puts "Usage: template.rb <project_name>"
+  exit
+end
+project_name = ARGV[0]
+system ("mkdir #{project_name}")
+system ("sed 's/template/#{project_name}/' CMakeLists.txt > #{project_name}/CMakeLists.txt")
+system ("cp template.cpp #{project_name}/#{project_name}.cpp")

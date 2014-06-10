@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./makec++ $1
+if [ -d $1 ]
+then
+  echo "created $1"
+    mv $1 c++11/
+fi
+
