@@ -1,0 +1,4 @@
+python setup.py install --record files.txt
+Once you want to uninstall you can use xargs to do the removal:
+
+cat files.txt | xargs rm -rf
