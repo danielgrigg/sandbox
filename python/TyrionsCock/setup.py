@@ -3,8 +3,8 @@ from distutils.core import setup
 setup(
     name='TyrionsCock',
     version='0.1.0',
-    author='Danny G'
-    author_email='mail@danielgrigg.com'
+    author='Danny G',
+    author_email='mail@danielgrigg.com',
     packages=['tyrionscock', 'tyrionscock.test'],
     scripts=['bin/stowe-cock.py', 'bin/wash-cock.py'],
     url='http://pypy.python.org/pypy/TyrionsCock/',
