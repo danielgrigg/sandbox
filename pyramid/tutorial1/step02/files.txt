@@ -1,1 +1,0 @@
-/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/tutorial-0.0.0-py3.4.egg
