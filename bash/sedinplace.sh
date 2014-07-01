@@ -1,2 +1,2 @@
-sed -i -e 's/lazy/purple/' foo.txt 
+sed -i '' -e 's/lazy/purple/' foo.txt 
 
