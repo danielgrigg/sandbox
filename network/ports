@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-lsof -n -i4TCP:9001

@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>quickTutorial.qml</file>
-        <file>states.png</file>
-    </qresource>
-</RCC>

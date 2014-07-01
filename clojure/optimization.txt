@@ -1,3 +1,0 @@
-1. Multiplies still outperform divisions.  Invert and multiply for successive ops.
-2. Transients
-

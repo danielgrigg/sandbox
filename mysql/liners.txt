@@ -1,4 +1,0 @@
-mysqld_safe --user=mysql & # start mysql server
-
-mysqladmin shutdown # shutdown mysql server
-

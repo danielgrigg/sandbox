@@ -1,1 +1,0 @@
-MALLOC_EXTRA_DEBUG=1 MALLOC_EXTRA=100 LD_PRELOAD=./malloc-extra.so  ./test

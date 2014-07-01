@@ -1,8 +1,0 @@
-#!/bin/sh
-
-reltime=$1
-message=$2
-title=${3:-RemindMe}
-at $1 << EOF
-osascript -e "display notification \"$message\" with title \"$title\""
-EOF
