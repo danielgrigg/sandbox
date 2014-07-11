@@ -74,10 +74,10 @@ let uncurry g (x,y)  = g x y
 
 let (<<.) (h1,m1,f1) (h2,m2,f2) = 
   match (f1,f2) with
-    | ("AM","AM") 
-    | ("PM","PM") 
-    | ("AM","PM") 
-    | ("PM","AM") -> (f1,h1,m1) < (f2,h2,m2)
+    | ("AM","AM") -> (h1,m1) < (h2,m2)
+    | ("PM","PM") -> (h1,m1) < (h2,m2)
+    | ("AM","PM") -> true
+    | ("PM","AM") -> false
     | _ -> failwith "error"
 
 
@@ -85,9 +85,85 @@ type Time = { f:string; h:int; m:int }
 
 let (<.) x y = 
   match (x.f,y.f) with
-    | ("AM","AM") 
-    | ("PM","PM") 
-    | ("AM","PM") 
-    | ("PM","AM") -> x < y
+    | ("AM","AM") -> x < y
+    | ("PM","PM") -> x < y
+    | ("AM","PM") -> true
+    | ("PM","AM") -> false
     | _ -> failwith "error"
+
+type Time2 = 
+  | AM of hour:int * minute:int
+  | PM of hour:int * minute:int
+
+let timeLessThan t1 t2 =
+  match (t1, t2) with 
+  | (AM (h1,m1), AM (h2,m2)) -> (h1,m1) < (h2,m2)
+  | (PM (h1,m1), PM (h2,m2)) -> (h1,m1) < (h2,m2)
+  | (AM _, PM _) -> true
+  | (PM _, AM _) -> false
+
+
+type Currency = { pounds:int; shillings:int; pence:int}
+type Currency2 = | Currency2 of pounds:int * shillings:int
+type Currency3 = int*int*int
+
+
+let addCurrency c1 c2 =
+  let pence (a,b,c) = a*20*12 + b*12 + c
+  let shilling p = p / 12
+  let pound p = (shilling p ) / 20
+  let penceSum = pence c1 + pence c2 
+  (pound penceSum, shilling penceSum % 20, penceSum % 12)
+
+let addCurrency2 c1 c2 =
+  let pence x = x.pounds*20*12 + x.shillings*12 + x.pence
+  let shillings x = x / 12
+  let pounds x = (shillings x) / 20
+  let penceSum = pence c1 + pence c2
+  {pounds = pounds penceSum; 
+   shillings = shillings penceSum % 20;
+   pence = penceSum % 12}
+
+let (.+.) (a:float,b:float) (c:float,d:float) = (a + c, b + d)
+let (.*.) (a:float,b:float) (c:float,d:float) = (a*c - b*d, b*c + a*d)
+let (-.) (a:float,b:float) = (-a,-b)
+let (.-.) x y = x .+. (-.) y
+let (./.) x (a:float,b:float) = 
+  let l = a*a + b*b
+  x .*. (a/l, -b/l) 
+
+
+type StraightLine = { a:float; b:float }
+let mirrorY l = { a = -l.a; b = l.b }
+let str l = sprintf "y = %fx + %f" l.a l.b
+
+type Solution = 
+  | TwoRoot of float*float
+  | OneRoot of float
+  | NoRoot
+
+type Equation = float*float*float
+
+let solve (a,b,c) =
+  let d = b*b - 4.0*a*c
+  if d < 0.0 || a = 0.0 then NoRoot
+  else 
+    let sqrtD = sqrt d
+    if sqrtD =  0.0 then OneRoot (-b / (2.0*a))
+    else TwoRoot ((-b + sqrtD)/(2.0*a), (-b - sqrtD)/(2.0*a))
+ 
+
+type Shape = 
+  | Circle of radius:float
+  | Square of width:float
+  | Triangle of a:float * b:float * c:float
+
+let area = function
+  | Circle r when r > 0.0 -> System.Math.PI * r * r
+  | Square w when w > 0.0 -> w * w
+  | Triangle (a,b,c) 
+    when a > 0.0 && b > 0.0 && c > 0.0 && 
+         a < b + c && b < c + a && c < a + b -> 
+    let s = (a + b + c) / 2.0
+    sqrt(s * (s-a) * (s-b)*(s-c));;
 
