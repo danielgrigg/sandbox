@@ -170,4 +170,36 @@ let area = function
 // cheapter 4
 
 let upto x = [1..x]
-let downto1 n = [n..-1..1]
+let downto1 n = [n..(-1)..1]
+
+let even n = n % 2 = 0
+let evenN n = [for n in 1..n do if even n then yield n]
+
+let rec altsum = function
+  | [] -> 0
+  | [x] -> x
+  | x0::xs -> if (xs.IsEmpty) then x0 else x0 - xs.Head + altsum xs.Tail;;
+
+//
+let rec rmodd = function
+  | [] -> []
+  | [x] -> [x]
+  | x0::x1::xe -> x0::(rmodd xs)
+
+let rec revens = function
+  | [] -> []
+  | x0::xs -> if even x0 then revens xs else x0::(revens xs)
+ 
+let rec multiplicity n xs = 
+  let rank x n' = if (x = n') then 1 else 0
+  match xs with 
+  | [] -> 0
+  | [x] -> (rank x n)
+  | x::xs' -> (rank x n) + (multiplicity n xs')
+
+let rec split = function
+  | [] -> ([],[])
+  | [x] -> ([x],[])
+  e x0::x1::xs -> let ys,ys' = split xs
+                  (x0::ys, x1::ys')
+
