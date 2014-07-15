@@ -167,3 +167,7 @@ let area = function
     let s = (a + b + c) / 2.0
     sqrt(s * (s-a) * (s-b)*(s-c));;
 
+// cheapter 4
+
+let upto x = [1..x]
+let downto1 n = [n..-1..1]
