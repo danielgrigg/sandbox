@@ -184,7 +184,7 @@ let rec altsum = function
 let rec rmodd = function
   | [] -> []
   | [x] -> [x]
-  | x0::x1::xe -> x0::(rmodd xs)
+  | x0::x1::xs -> x0::(rmodd xs)
 
 let rec revens = function
   | [] -> []
@@ -200,6 +200,18 @@ let rec multiplicity n xs =
 let rec split = function
   | [] -> ([],[])
   | [x] -> ([x],[])
-  e x0::x1::xs -> let ys,ys' = split xs
+  | x0::x1::xs -> let ys,ys' = split xs
                   (x0::ys, x1::ys')
+
+let rec zip = function
+  | ([], []) -> []
+  | ([x],[y]) -> [(x,y)]
+  | (x::xs,y::ys) -> (x,y)::(zip (xs, ys))
+  | _ -> failwith "list length mismatch"
+
+let rec prefix = function
+  | ([x], []) -> false
+  | (x::xs, y::ys) -> x = y && (prefix (xs, ys))
+  | _ -> true
+
 
