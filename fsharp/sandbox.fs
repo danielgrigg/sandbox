@@ -215,3 +215,80 @@ let rec prefix = function
   | _ -> true
 
 
+// 4.11
+
+let rec count xs x = 
+  match xs with
+  | [] -> 0
+  | (x'::xs') when x' = x -> 1 + (count xs' x)
+  | (_::xs') -> count xs' x
+
+// [1;2;4;4;7;8] 3''
+// [3] 2 -> [2 3]
+// [2] 3
+// [2;4] 1
+// [2;4] 3
+// [2;4] 
+let rec insert xs x =
+  match xs with
+  | [] -> [x]
+  | (y::ys) when (x <= y) -> x::y::ys
+  | (y::ys) when (x > y) -> y::(insert ys x)
+  | _ -> failwith (sprintf "matched %A %d" xs x)
+
+let rec insert2 xs x =
+  match xs with
+  | [] -> [x]
+  | (y::ys) -> if (x <= y) then x::y::ys else y::(insert ys x)
+  
+// [2] []
+// [3;6] [6]
+// [3;4] [4]
+// [4;5;6] [3;6]
+let rec intersect = function
+  | ([],[]) -> []
+  | (xs,[]) -> []
+  | ([],ys) -> []
+  | (x::xs,y::ys) when (x = y) -> x::(intersect (xs,ys))
+  | (x::xs,y::ys) when (x < y) -> intersect(xs,y::ys)
+  | (x::xs,y::ys) when (x > y) -> intersect(x::xs, ys)
+
+let rec intersect2 = function
+  | (x::xs,y::ys) when (x < y) -> intersect(xs,y::ys)
+  | (x::xs,y::ys) when (x > y) -> intersect(x::xs, ys)
+  | (x::xs,y::ys) -> x::(intersect (xs,ys))
+  | _ -> []
+
+let rec intersect3 = function
+  | (x::xs,y::ys) -> if (x = y)   then x::(intersect (xs,ys))
+                     elif (x < y) then intersect(xs,y::ys)
+                     else              intersect(x::xs,ys)
+  | _ -> []
+
+[ ([2],[]); 
+  ([2],[2]); 
+  ([3;6],[6]);
+  ([3;4],[4]);
+  ([4;5;6],[3;6]);
+  ([1;1;1;2;2],[1;1;2;4])
+] 
+|> List.map (fun x -> printfn "intersect %A: %A" x (intersect x))
+|> ignore
+
+
+
+// [1;1;2] [1;2;4] -> [1;1;1;2;2;4]
+let rec plus = function
+  | (x::xs,y::ys) -> x::y::(plus (xs,ys))
+  | _ -> []
+
+// [1;1;1;2;2] [1;1;2;3] -> [1;2]
+// [1;2;2] [2;3] 
+// [1;1;2;3] [1;1;1;2;2] -> [3]
+// [2;3] [1;2;2]
+let rec minus = function
+  | (x::xs,y::ys) when (x < y) -> x::(minus (xs,y::ys))
+  | (x::xs,y::ys) when (x > y) -> (minus (x::xs,ys))
+  | (x::xs,y::ys)              -> minus (xs,ys)
+  | (xs,[]) -> xs
+  | _ -> []
