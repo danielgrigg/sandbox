@@ -292,3 +292,60 @@ let rec minus = function
   | (x::xs,y::ys)              -> minus (xs,ys)
   | (xs,[]) -> xs
   | _ -> []
+
+// 4.12
+//
+let rec sum (p, xs) = 
+  match xs with
+  | [] -> 0
+  | y::ys when p(y) -> y + sum(p,ys)
+  | _::ys -> sum(p,ys)
+
+// 4.13
+
+let min xs =
+  let rec minWith m ys =
+    match ys with
+    | [] -> m
+    | y'::ys' when y' < m -> minWith y' ys'
+    | _::ys' -> minWith m ys'
+  match xs with
+  | [] -> failwith "empty list"
+  | x'::xs' -> minWith x' xs'
+  
+let rec delete (a,xs) = 
+  match xs with
+  | y::ys when y = a -> ys
+  | y::ys -> y::(delete (a,ys))
+  | _ -> []
+
+// [3; 1; 2; 7; 5] -> [1;2;3;5;7]
+
+let naiveSort xs =
+  let rec naiveSort' ys zs =
+    match zs with
+    | [] -> ys
+    | zs' -> 
+      let m = min zs'
+      naiveSort' (ys@[m]) (delete (m,zs'))
+  naiveSort' [] xs
+
+let smallest ys = 
+  let rec smallest' = function
+  | (n,[]) -> n
+  | (n,x::xs) when x < n -> smallest' (x,xs)
+  | (n,x::xs) -> smallest' (n,xs)
+  match ys with 
+  | [] -> None
+  | y'::ys' -> Some (smallest' (y', ys'))
+
+let rec rev = function
+  | [] -> []
+  | x::xs -> (rev xs)@[x]
+
+let rec revrev = function
+  | [] -> []
+  | x::xs -> (revrev xs)@[rev x]
+
+
+
