@@ -347,3 +347,19 @@ let rec revrev = function
   | [] -> []
   | x::xs -> (revrev xs)@[rev x]
 
+
+// 4.22
+//
+
+type Polynomial = float list
+
+let (.*.) (k:float) (p:Polynomial) = 
+  let rec multiply (p':Polynomial) = 
+    match p' with 
+    | (c::cs) -> (k * c)::(multiply cs)
+    | [] -> []
+  multiply p
+
+// a0 + a1x + a2x^2 + ... = [a2 a1 a0]
+// x * (a0 + a1x + a2x^2) = [a2 a1 a0 0]
+let rec multiplyByX (q:Polynomial) = 0.0::q
