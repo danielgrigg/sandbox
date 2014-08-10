@@ -252,6 +252,7 @@ let rec intersect = function
   | (x::xs,y::ys) when (x = y) -> x::(intersect (xs,ys))
   | (x::xs,y::ys) when (x < y) -> intersect(xs,y::ys)
   | (x::xs,y::ys) when (x > y) -> intersect(x::xs, ys)
+  | _ -> []
 
 let rec intersect2 = function
   | (x::xs,y::ys) when (x < y) -> intersect(xs,y::ys)
@@ -353,6 +354,16 @@ let rec revrev = function
 
 type Polynomial = float list
 
+let polynomialString (p:Polynomial) = 
+  let rec polynomialString' (p:Polynomial) n = 
+    let term (k,n) = (string k) + "x^" + (string n)
+    match p with
+    | k1::k2::ks -> (term (k1,n)) + " + " + (polynomialString' (k2::ks) (n+1))
+    | [k] -> term (k,n)
+    | _ -> ""
+  polynomialString' p 0
+
+
 let (.*.) (k:float) (p:Polynomial) = 
   let rec multiply (p':Polynomial) = 
     match p' with 
@@ -363,3 +374,79 @@ let (.*.) (k:float) (p:Polynomial) =
 // a0 + a1x + a2x^2 + ... = [a2 a1 a0]
 // x * (a0 + a1x + a2x^2) = [a2 a1 a0 0]
 let rec multiplyByX (q:Polynomial) = 0.0::q
+
+
+// (a0 + a1x1 + a2x^2) + (b0 + b1x1 + b2x^2) = (a0 + b0 + (a1+b1)x1 + ...
+let (.+.) (p:Polynomial) (q:Polynomial) =
+  let rec addPolynomial = function
+  | (x::xs,y::ys) -> (x + y)::(addPolynomial (xs,ys))
+  | (x,[]) -> x
+  | ([],y) -> y
+  addPolynomial(p,q)
+
+let rec multiplyPolynomial (p:Polynomial) (q:Polynomial) :Polynomial  = 
+  match (p,q) with
+  | ([], Q) -> 0.0 .*. Q
+  | (x::xs,Q) -> (x .*. Q) .+. (multiplyByX (multiplyPolynomial xs Q))
+
+let p0 = [2.0; 1.0]
+let q0 = [0.0; 2.0]
+
+
+//(2 + x) * (0 + 2x) = 4x + 2x^2
+// (2 + 3x) * (1 + 2x) = (2 + 7x + 6x^2)
+let p1,q1 = [2.0; 3.0], [1.0;2.0]
+
+
+type Name = string
+type Phone = string
+type Sex = | Male | Female 
+type BirthYear = int
+type Interest = string
+type InterestList = Interest list
+
+type Client = Name * Phone * Sex * BirthYear * InterestList
+
+let clientdb = [
+  ("Alice", "0412743999", Female, 1980, ["Climbing"; "Walking"; "Dancing"])
+  ("Bob", "0425111332", Male, 1978, ["Climbing"])
+  ("Eve", "0444222333", Female, 1984, ["Dancing"; "Yoga"])
+  ("Alex", "0425454876", Male, 1975, ["Reading"; "Sailing"])
+  ("OldJoe", "0123888777", Male, 1969, ["Reading"; "Walking"])
+  ("OldClare", "0442787484", Female,1972 , ["Walking"; "Climbing"])
+]
+
+let profile (_, _, sex, dob, interests) = (sex, dob, interests)
+
+let sharedInterests mine theirs = 
+  let rec hasInterest = function
+    | x::xs -> (List.exists (fun elem -> elem = x) theirs) || (hasInterest xs)
+    | _ -> false
+  hasInterest mine
+
+let compatible client1 client2 = 
+  let (sex1,dob1,interests1), (sex2, dob2, interests2) = 
+    (profile client1, profile client2)
+  sex1 <> sex2 && 
+    (abs (dob1 - dob2)) < 10 && 
+    (sharedInterests interests1 interests2)
+
+let rec matchme (me:Client) (clients:Client list) = 
+  match clients with 
+  | c::cs when (compatible me c) -> c::(matchme me cs)
+  | c::cs -> matchme me cs
+  | _ -> []
+
+
+let foldFilter (p:'a -> bool) (xs:'a list) = 
+  List.foldBack (fun elem -> (fun acc -> if (p elem) then elem::acc else acc)) xs []
+
+let foldRev xs = List.fold (fun acc elem -> elem::acc) [] xs
+let foldRevRev xs = 
+  List.fold (fun acc elem -> (foldRev elem)::acc) [] xs
+
+let downto1 f (n:int) e = 
+  List.fold (fun acc n -> f n acc )  e [n..(-1)..1]
+
+let factorial2 n = downto1 (fun n' acc -> n' * acc) n 1
+
