@@ -450,3 +450,30 @@ let downto1 f (n:int) e =
 
 let factorial2 n = downto1 (fun n' acc -> n' * acc) n 1
 
+let gbuilder g n = downto1 (fun n' acc -> (g n')::acc) n []
+
+let crossproduct l1 l2 =
+  seq { for el1 in l1 do
+    for el2 in l2 do
+      yield el1, el2 };;
+
+let dom (r:Set<'a * 'b>) :Set<'a> = Set.map (fun (a,_) -> a) r
+let rng (r:Set<'a * 'b>) :Set<'b> = Set.map (fun (_,b) -> b) r
+
+let apply (r:Set<'a * 'b>) (a:'a) :Set<'b> = 
+  r |> Set.filter (fun (x,_) -> x = a) |> Set.map (fun (_,y) -> y)
+
+let symmetricClosure (r:Set<'a * 'a>) :Set<'a * 'a> = 
+  r |> Set.map (fun (a,b) -> (b,a)) |> Set.union r
+
+let testSet0 = [(1,1);(1,2);(1,3);(2,4);(4,2)] |> set;;
+
+let composition (r:Set<'a * 'b>) (s:Set<'b * 'c>) :Set<'a * 'c> =
+  let a2c (a,b) = apply s b |> Set.map (fun sb -> (a,sb))
+  Set.fold (fun acc ab -> ab |> a2c |> Set.union acc) Set.empty r
+
+let transitiveClosure (r:Set<'a * 'a>) :Set<'a * 'a> =
+  let n = Set.count r  
+  let power s n' = List.fold (fun acc _ -> composition acc acc) s [2..n']
+  List.fold (fun acc n' -> power r n' |> Set.union acc ) r [2..n]
+
