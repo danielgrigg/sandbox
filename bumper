@@ -1,4 +1,6 @@
+echo "Pushing commits started $(date)"
 echo $(date) >> ~/sandbox/commits
 git add commits
 git commit -m "heartbeat"
 git push
+echo "Pushed commits"

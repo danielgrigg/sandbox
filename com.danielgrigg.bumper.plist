@@ -14,10 +14,14 @@
     <array>
       <dict>
         <key>Hour</key>
-        <integer>14</integer>
+        <integer>20</integer>
         <key>Minute</key>
-        <integer>26</integer>
+        <integer>19</integer>
       </dict>
     </array>
+    <key>StandardOutPath</key>
+    <string>/tmp/bumper.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/bumper.err</string>
 </dict>
 </plist>
