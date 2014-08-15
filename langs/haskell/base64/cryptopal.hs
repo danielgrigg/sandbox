@@ -10,8 +10,9 @@ bool2bin True = 1
 
 
 -- read hex cause we don't have numeric
-readHex (a:b:[]) = (digitToInt a) * 16 + digitToInt b
-byteValues s = map readHex $ chunksOf 2 s
+readHexByte (a:b:[]) = (digitToInt a) * 16 + digitToInt b
+showHexByte x = [(intToDigit (div x 16)), (intToDigit (mod x 16))]
+byteValues s = map readHexByte $ chunksOf 2 s
 bitstream s = foldl (\a b -> (byte2bits b) ++ a ) [] $ byteValues s
 
 -- base64 encoding table
@@ -50,7 +51,19 @@ leftover s n = length s `mod` n
 -- | Base64 encode a string.
 -- TODO - currently broken cause I'm drunk and tried refactoring
 -- when the implementations were different between the two source
--- files but whatevs
+-- files but whs
 encode s | leftover s 3 == 1  = replaceLast 2 '=' $ encodePadded $ s ++ "\0\0"
 encode s | leftover s 3 == 2  = replaceLast 1 '=' $ encodePadded $ s ++ "\0"
 encode s = encodePadded s
+
+xorBit a b = a `xor` b
+
+xorByteValues a b = map (\(x,y) -> xor x y) $ zip a b
+
+untuple2 f (x,y) = f x y
+
+xorHexString a b = 
+  concat $
+  map (showHexByte . (untuple2 xor))  $
+  zip (byteValues a) (byteValues b)
+
