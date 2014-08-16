@@ -67,3 +67,45 @@ xorHexString a b =
   map (showHexByte . (untuple2 xor))  $
   zip (byteValues a) (byteValues b)
 
+englishLetterFreq = 
+  [0.08167, 0.01492, 0.02782, 0.04253, 0.130001, 0.02228, 0.02015, 0.06094, 
+   0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929, 
+   0.00095, 0.05987, 0.06327, 0.09056, 0.02758, 0.00978, 0.0236, 0.0015, 
+   0.01974, 0.00074]
+
+addLetter hist c = 
+  let oldFreq = (M.findWithDefault 0 c hist)
+  in M.insert c (1 + oldFreq ) hist
+
+emptyLetterFreq = 
+  let letters = ['a'..'z']
+  in M.fromList $ zip letters $ replicate (length letters) 0
+
+histogram s = foldl addLetter emptyLetterFreq s
+
+freqs s = 
+  let hist = histogram s
+      count = sum $ M.elems hist
+      countFloat = (fromIntegral count)::Double
+  in M.map (\a -> (fromIntegral a) / countFloat) hist
+
+sumSquaresError [] _ = 0.0
+sumSquaresError _ [] = 0.0
+sumSquaresError xs ys =
+  let zs = zip xs ys
+      sumErrors =  sum $ map (\(x,y) -> (x - y)^2) $ zs
+      n = length zs
+  in  sumErrors / (fromIntegral n)::Double
+
+
+simplifyText s = 
+  filter (\c -> c >= 'a' && c <= 'z') $
+  map toLower s
+
+score text =
+  let soup = simplifyText text 
+      soupFreqs = M.elems $ freqs soup
+  in sumSquaresError soupFreqs englishLetterFreq
+
+corpus0 = "It was Easter last year. Mum and I were at a Vietnamese restaurant in Sydney. At 27, I was vaguely aware that there was no longer infinite time left for me to have children. I loved my job as a reporter. I didn't want kids any time soon. But I didn't want all my options to vanish while I was busy filing stories. So sitting there, facing her, I asked the question."
+
