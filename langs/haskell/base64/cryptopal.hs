@@ -1,5 +1,6 @@
 import Data.Char
 import Data.List.Split
+import Data.List
 import qualified Data.Map.Strict as M
 import Data.Bits
 import Data.Maybe
@@ -11,9 +12,15 @@ bool2bin True = 1
 
 -- read hex cause we don't have numeric
 readHexByte (a:b:[]) = (digitToInt a) * 16 + digitToInt b
+readHexByte (a:[]) = digitToInt a
+readHexByte _ = 0
+
 showHexByte x = [(intToDigit (div x 16)), (intToDigit (mod x 16))]
-byteValues s = map readHexByte $ chunksOf 2 s
-bitstream s = foldl (\a b -> (byte2bits b) ++ a ) [] $ byteValues s
+
+hexString2Bytes s = map readHexByte $ chunksOf 2 s
+string2Bytes = map ord
+
+bitstream s = foldl (\a b -> (byte2bits b) ++ a ) [] $ hexString2Bytes s
 
 -- base64 encoding table
 encodings = M.fromList $
@@ -58,14 +65,14 @@ encode s = encodePadded s
 
 xorBit a b = a `xor` b
 
-xorByteValues a b = map (\(x,y) -> xor x y) $ zip a b
-
 untuple2 f (x,y) = f x y
 
-xorHexString a b = 
+-- | xor two strings
+xorHexStrings a b = 
   concat $
   map (showHexByte . (untuple2 xor))  $
-  zip (byteValues a) (byteValues b)
+  zip (hexString2Bytes a) (hexString2Bytes b)
+
 
 englishLetterFreq = 
   [0.08167, 0.01492, 0.02782, 0.04253, 0.130001, 0.02228, 0.02015, 0.06094, 
@@ -77,12 +84,13 @@ addLetter hist c =
   let oldFreq = (M.findWithDefault 0 c hist)
   in M.insert c (1 + oldFreq ) hist
 
-emptyLetterFreq = 
+emptyLetterHistogram = 
   let letters = ['a'..'z']
   in M.fromList $ zip letters $ replicate (length letters) 0
 
-histogram s = foldl addLetter emptyLetterFreq s
+histogram s = foldl addLetter emptyLetterHistogram s
 
+freqs [] = M.map (\_ -> 0.0) emptyLetterHistogram
 freqs s = 
   let hist = histogram s
       count = sum $ M.elems hist
@@ -97,15 +105,34 @@ sumSquaresError xs ys =
       n = length zs
   in  sumErrors / (fromIntegral n)::Double
 
+--  filter (\c -> c >= 'a' && c <= 'z') $
+simplifyText s = map toLower s
 
-simplifyText s = 
-  filter (\c -> c >= 'a' && c <= 'z') $
-  map toLower s
-
-score text =
+singleLetterScorer text =
   let soup = simplifyText text 
-      soupFreqs = M.elems $ freqs soup
+      soupFreqs = M.elems $ M.filterWithKey (\c _ -> isAlpha c) $ freqs soup
   in sumSquaresError soupFreqs englishLetterFreq
 
-corpus0 = "It was Easter last year. Mum and I were at a Vietnamese restaurant in Sydney. At 27, I was vaguely aware that there was no longer infinite time left for me to have children. I loved my job as a reporter. I didn't want kids any time soon. But I didn't want all my options to vanish while I was busy filing stories. So sitting there, facing her, I asked the question."
+wordScorer text = 
+  let actual = length $ words text
+      expected = (fromIntegral $ length text) / 6.0
+  in ((fromIntegral actual) - expected)^2
+
+isLegal c = ord c >= 32 && ord c <= 126
+
+multiScorer text | any (not . isLegal) text  = 999
+multiScorer text = singleLetterScorer text
+
+corpus1 = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+
+xorDecrypt bytes k = map (chr . (\b -> b `xor` k)) $ bytes
+
+scoredKeySearchRange bytes decryptor scorer k0 kn = 
+  [(scorer text, text) | k <- [k0..kn], let text = decryptor bytes k]
+
+searchXorByteKey bytes n =
+  take n $
+  map snd $
+  sort $
+  scoredKeySearchRange bytes xorDecrypt singleLetterScorer 1 255  
 
