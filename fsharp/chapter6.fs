@@ -142,14 +142,23 @@ let rec deleteSmallest = function
       let (minValue, deleted) = deleteSmallest l
       (minValue, SNode(deleted, a, r))
 
-(*let rec delete x t = *)
-  (*match t with*)
-  (*| SLeaf -> SLeaf*)
-  (*| SNode(l,a,r) when x < a -> SNode(delete x l, a, r)*)
-  (*| SNode(l,a,r) when x > a -> SNode(l, a, delete x r)*)
-  (*| SNode(l,a,r) when x = a -> SLeaf*)
-  (*| _ -> t*)
+let rec delete x t = 
+  match t with
+  | SLeaf -> failwith "delete invariant - must delete a node"
+  | SNode(SLeaf, a, SLeaf) when x = a -> SLeaf
+  | SNode(SLeaf, a, SLeaf) -> t
+  | SNode(l, a, SLeaf) when x = a -> l
+  | SNode(l, a, SLeaf) -> SNode(delete x l, a, SLeaf)
+  | SNode(SLeaf, a, r) when x = a -> r
+  | SNode(SLeaf, a, r) -> SNode(SLeaf, a, delete x r)
+  | SNode(l,a,r) when x < a -> SNode(delete x l, a, r)
+  | SNode(l,a,r) when x > a -> SNode(l, a, delete x r)
+  | SNode(l,a,r) -> let (aSuccessor, withDeleted) = deleteSmallest r
+                    SNode(l, aSuccessor, withDeleted) 
 
 
 let st0 = SNode(SLeaf, 0, SNode(SLeaf,2,SNode(SLeaf,4,SLeaf)))
 let st1 = SNode(st0, 5, SNode(SLeaf, 7, SLeaf))
+let st2 = SNode(SNode(SLeaf,1,SLeaf), 2, SNode(SNode(SNode(SLeaf, 3, SLeaf), 4, SNode(SNode(SLeaf, 5, SLeaf), 6, SLeaf)), 7, SNode(SLeaf, 8, SLeaf)))
+let st3 = SNode(SNode(SLeaf, 3, SLeaf), 4, SNode(SNode(SLeaf, 5, SLeaf), 6, SLeaf))
+
