@@ -217,7 +217,21 @@ let rec propStr prop =
 and conjArg e = match e with | Disj _ -> bracket propStr e | _ -> propStr e
 and disjArg e = match e with | Conj _ -> bracket propStr e | _ -> propStr e
 and negArg e = match e with
-  | Atom _ -> propStr e
-  | Neg _ -> propStr e
-  | _ -> bracket propStr e
+                | Atom _ -> propStr e
+                | Neg _ -> propStr e
+                | _ -> bracket propStr e
+
+let pt8 = Disj(Conj(Atom "a", Atom "b"), Atom "c")
+let pt9 = Disj(Conj(Atom "a", Atom "b"), Atom "c")
+let pt10 = Disj(pt8, Atom "d")
+
+// wip
+(*let rec cnf prop = *)
+  (*match prop with *)
+  (*| Disj(p, Conj(q, r)) -> Conj(cnf (Disj(p, q)), cnf (Disj(p, r)))*)
+  (*| Disj(Conj(p,q),r) -> Conj(cnf (Disj(p,r)), cnf (Disj(q,r)))*)
+  (*| Disj(p,q) -> cnf (Disj(cnf p, cnf q))*)
+  (*| Conj(p,q) -> Conj(cnf p, cnf q)*)
+  (*| Atom _ -> prop*)
+  (*| Neg _ -> prop*)
 
