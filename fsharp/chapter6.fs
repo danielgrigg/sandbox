@@ -162,3 +162,62 @@ let st1 = SNode(st0, 5, SNode(SLeaf, 7, SLeaf))
 let st2 = SNode(SNode(SLeaf,1,SLeaf), 2, SNode(SNode(SNode(SLeaf, 3, SLeaf), 4, SNode(SNode(SLeaf, 5, SLeaf), 6, SLeaf)), 7, SNode(SLeaf, 8, SLeaf)))
 let st3 = SNode(SNode(SLeaf, 3, SLeaf), 4, SNode(SNode(SLeaf, 5, SLeaf), 6, SLeaf))
 
+//6.7
+
+type Prop = 
+  | Atom of string
+  | Conj of Prop * Prop
+  | Disj of Prop * Prop
+  | Neg of Prop
+
+let pt0 = Neg(Conj(Atom "p", Atom "q"))
+let pt1 = Neg(Disj(Atom "p", Atom "q"))
+
+// p and ~(q or r) = p and (~q and ~r)
+let pt2 = Conj(Atom "p", Neg(Disj(Atom "q", Atom "r")))
+let pt3 = Neg(Atom "p")
+let pt4 = Conj(Atom "p", Atom "q")
+let pt5 = Disj(Atom "p", Atom "q")
+
+// ~( ~(p and q) or ~(r or s) ) 
+//    = ~( (~p or ~q) or (~r and ~s)) 
+//    = ~(~p or ~q) and ~(~r and ~s)
+//    = (p and q) and (r or s)
+//
+// = ~~(p and q) and ~~(r or s)
+let pt6 = Neg(Disj(Neg(Conj(Atom "p", Atom "q")), Neg(Disj(Atom "r", Atom "s"))))
+
+let pt7 = Conj(Conj(Atom "p", Atom "q"), Atom "r")
+
+let rec normalForm prop = 
+  match prop with 
+  | Neg(Neg(p)) -> normalForm p
+  | Neg(Conj(p,q)) -> Disj(normalForm (Neg p), normalForm (Neg q))
+  | Neg(Disj(p,q)) -> Conj(normalForm (Neg p), normalForm (Neg q))
+  | Atom _ -> prop
+  | Conj(p, q) -> Conj(normalForm p, normalForm q)
+  | Disj(p, q) -> Disj(normalForm p, normalForm q)
+  | Neg p -> Neg(normalForm p)
+
+let rec propStringSimple prop = 
+  match prop with
+  | Atom p -> string p
+  | Neg p -> "~" + propStringSimple p
+  | Conj(p,q) -> "(" + propStringSimple p + " and " + propStringSimple q + ")"
+  | Disj(p,q) -> "(" + propStringSimple p + " or " + propStringSimple q + ")"
+
+let bracket f e = "(" + f e + ")"
+
+let rec propStr prop =
+  match prop with
+  | Atom p -> string p
+  | Neg p -> "~" + negArg(p)
+  | Conj(p,q) -> conjArg(p) + " and " + conjArg(q)
+  | Disj(p,q) -> disjArg(p) + " or " + disjArg(q)
+and conjArg e = match e with | Disj _ -> bracket propStr e | _ -> propStr e
+and disjArg e = match e with | Conj _ -> bracket propStr e | _ -> propStr e
+and negArg e = match e with
+  | Atom _ -> propStr e
+  | Neg _ -> propStr e
+  | _ -> bracket propStr e
+
