@@ -225,13 +225,26 @@ let pt8 = Disj(Conj(Atom "a", Atom "b"), Atom "c")
 let pt9 = Disj(Conj(Atom "a", Atom "b"), Atom "c")
 let pt10 = Disj(pt8, Atom "d")
 
-// wip
-(*let rec cnf prop = *)
-  (*match prop with *)
-  (*| Disj(p, Conj(q, r)) -> Conj(cnf (Disj(p, q)), cnf (Disj(p, r)))*)
-  (*| Disj(Conj(p,q),r) -> Conj(cnf (Disj(p,r)), cnf (Disj(q,r)))*)
-  (*| Disj(p,q) -> cnf (Disj(cnf p, cnf q))*)
-  (*| Conj(p,q) -> Conj(cnf p, cnf q)*)
-  (*| Atom _ -> prop*)
-  (*| Neg _ -> prop*)
+// ~(b or c) -> ~b and ~c
+let pt11 = Neg(Disj(Atom "b", Atom "c"))
 
+// a and (b or (d and e)) -> a and (b or d) and (b or e)
+let pt12 = Conj(Atom "a", Disj(Atom "b", Conj(Atom "d", Atom "e")))
+
+let literal = function 
+  | Atom _ -> true
+  | Neg _ -> true
+  | _ -> false
+
+let rec cnf prop = 
+  match prop with 
+  | Atom _ -> prop
+  | Neg _ -> prop
+  | Disj(p, q) when literal(p) && literal(q) -> Disj(p, q)
+  | Disj(p, Conj(q, r)) -> Conj(cnf (Disj(p, q)), cnf (Disj(p, r)))
+  | Disj(Conj(p,q),r) -> Conj(cnf (Disj(p,r)), cnf (Disj(q,r)))
+  | Disj(p,q) -> cnf (Disj(cnf p, cnf q))
+  | Conj(p,q) -> Conj(cnf p, cnf q)
+  
+let toCnf prop = prop |> normalForm |> cnf
+let prop2str prop = prop |> toCnf |> propStr
