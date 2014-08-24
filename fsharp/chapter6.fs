@@ -239,7 +239,7 @@ let literal = function
 let rec cnf prop = 
   match prop with 
   | Atom _ -> prop
-  | Neg _ -> prop
+  | Neg _ -> cnf prop
   | Disj(p, q) when literal(p) && literal(q) -> Disj(p, q)
   | Disj(p, Conj(q, r)) -> Conj(cnf (Disj(p, q)), cnf (Disj(p, r)))
   | Disj(Conj(p,q),r) -> Conj(cnf (Disj(p,r)), cnf (Disj(q,r)))
@@ -248,3 +248,27 @@ let rec cnf prop =
   
 let toCnf prop = prop |> normalForm |> cnf
 let prop2str prop = prop |> toCnf |> propStr
+
+// a or b or ~a or ~b -> Disj(a, Disj(b, Disj(Neg(a), Neg(b))))
+let pt13 = Disj(Atom "a", Disj(Atom "b", Disj(Neg(Atom "a"), Neg(Atom "b"))))
+
+
+let rec accDisSymbols' (prop:Prop) ((s,ns):Set<string>*Set<string>) = 
+  match prop with
+  | Atom p -> (Set.add p s, ns)
+  | Neg(Atom p) -> (s, Set.add p ns)
+  | Disj(Atom p, q) -> accDisSymbols' q (Set.add p s, ns)
+  | Disj(p, Atom q) -> accDisSymbols' p (Set.add q s, ns)
+  | Disj(Neg(Atom p), q) -> accDisSymbols' q (s, Set.add p ns) 
+  | Disj(p, Neg(Atom q)) -> accDisSymbols' p (s, Set.add q ns) 
+  | _ -> failwith "accDisSymbols invariant : not a disjunction of literals"
+
+let tautologyCheck prop = accDisSymbols' prop (Set.empty, Set.empty)
+
+(*let rec tautologyCheck prop symbols = *)
+  (*match prop with*)
+  (*| Atom _ -> true*)
+  (*| Neg p -> not (tautologyCheck p)*)
+  (*| Disj(Atom p, Neg(Atom q)) -> p = q*)
+  (*| Disj(Neg(Atom p), Atom q) -> p = q*)
+  (*| Disj(Atom p, Disj q) ->   (tautologyCheck q)*)
