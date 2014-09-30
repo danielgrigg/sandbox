@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+function scalaVersion {
+  scalac -version 2>&1 | cut -d' ' -f4
+}
+
+if [[ -z $1 ]]; then 
+  echo "Usage: scalager project-name"
+  exit 1
+fi
+
+project="$1"
+mkdir "$project"
+cd "$project"
+
+mkdir -p src/{main,test}/{scala,java,resources}
+mkdir lib
+
+touch build.sbt
+echo "name := \"$project\"
+
+version := \"0.0.1\"
+
+scalaVersion := \"$(scalaVersion)\"" > build.sbt
+
+mkdir project
+mkdir target
+
+echo "target/" > .gitignore
+
