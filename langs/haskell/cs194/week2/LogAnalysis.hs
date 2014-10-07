@@ -3,6 +3,7 @@ module LogAnalysis where
 
 import Log
 
+-- | this is a documentation string for parsemessage
 parseMessage :: String -> LogMessage
 
 parseMessage message = 
