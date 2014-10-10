@@ -1,5 +1,5 @@
 
-./week4.hs,581
+./week4.hs,575
 module Week4 Week40,1
 --fun1 --fun13,4
 fun1 fun15,6
@@ -23,5 +23,5 @@ sieveSundaram sieveSundaram55,56
 sieveSundaram sieveSundaram56,57
 cartProd cartProd58,59
 cartProd cartProd59,60
-todelete todelete61,62
-sieve sieve63,64
+sieve sieve61,62
+sieve sieve62,63

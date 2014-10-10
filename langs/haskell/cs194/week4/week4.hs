@@ -59,12 +59,12 @@ sieveSundaram = undefined
 cartProd :: [a] -> [b] -> [(a,b)]
 cartProd xs ys = [(x,y) | x <- xs, y <- ys]
 
-todelete n =
-
+sieve :: Integer -> [Integer]
 sieve n =
   let deleted =
         map (\(i,j) -> i+j+2*i*j)
-      . filter (\(i,j) -> i <= j && i+j+2*i*j <= n)
-      $ cartProd [1..n] [1..n]
-
-  in map (\x -> 2 * x + 1) . filter (\x -> not $ x `elem` ys) $ [1..n]
+        . filter (\(i,j) -> i <= j && i+j+2*i*j <= n)
+        $ cartProd [1..n] [1..n]
+  in map (\x -> 2 * x + 1)
+     . filter (\x -> not $ x `elem` deleted)
+     $ [1..n]
