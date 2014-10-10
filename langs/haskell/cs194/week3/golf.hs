@@ -24,5 +24,7 @@ histo xs =
 histogram xs =
   let hs = histo xs
       go _ 0 = "==========\n0123456789"
-      go ys n = map (\x -> if x >= n then '*' else ' ') ys ++ "\n" ++ go ys (n-1)
+      go ys n = map (\x -> if x >= n then '*' else ' ') ys
+                ++ "\n"
+                ++ go ys (n-1)
   in go hs (maximum hs)

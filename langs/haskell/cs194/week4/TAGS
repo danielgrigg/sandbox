@@ -1,0 +1,27 @@
+
+./week4.hs,581
+module Week4 Week40,1
+--fun1 --fun13,4
+fun1 fun15,6
+fun1 fun16,7
+fun2 fun28,9
+fun2 fun29,10
+data Tree Tree14,15
+data Tree a = Leaf Leaf14,15
+data Tree a = Leaf | Node Node14,15
+depth depth18,19
+depth depth19,20
+treeInsert treeInsert22,23
+treeInsert treeInsert24,25
+foldTree foldTree40,41
+foldTree foldTree41,42
+xor xor44,45
+xor xor45,46
+myFoldl myFoldl50,51
+myFoldl myFoldl51,52
+sieveSundaram sieveSundaram55,56
+sieveSundaram sieveSundaram56,57
+cartProd cartProd58,59
+cartProd cartProd59,60
+todelete todelete61,62
+sieve sieve63,64
