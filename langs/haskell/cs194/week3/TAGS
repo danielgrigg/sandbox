@@ -1,12 +1,0 @@
-
-./golf.hs,232
-module Golf Golf0,1
-every every4,5
-every every5,6
-skips skips9,10
-skips skips10,11
-localMaxima localMaxima12,13
-localMaxima localMaxima13,14
---histogram --histogram18,19
-histo histo19,20
-histogram histogram23,24
