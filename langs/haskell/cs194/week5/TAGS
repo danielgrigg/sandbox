@@ -1,0 +1,67 @@
+
+./calc.hs,22
+module Calc Calc0,1
+
+./ExprT.hs,100
+data ExprT ExprT2,3
+data ExprT = Lit Lit2,3
+           | Add Add3,4
+           | Mul Mul4,5
+
+./Parser.hs,717
+newtype State State13,14
+newtype State s r = State State13,14
+data Expr Expr16,17
+data Expr = Const Const16,17
+          | Add Add17,18
+          | Mul Mul18,19
+instance instance21,22
+type Parser Parser37,38
+type Parser a a37,38
+digit digit40,41
+digit digit41,42
+num num48,49
+num num49,50
+space space53,54
+space space54,55
+eatSpace eatSpace61,62
+eatSpace eatSpace62,63
+char char65,66
+char char66,67
+op op72,73
+op op73,74
+eof eof76,77
+eof eof77,78
+parseExpr parseExpr83,84
+parseExpr parseExpr84,85
+execParser execParser91,92
+execParser execParser92,93
+evalParser evalParser95,96
+evalParser evalParser96,97
+parseExp parseExp100,101
+parseExp parseExp101,102
+
+./StackVM.hs,675
+module StackVM StackVM0,1
+data StackVal StackVal4,5
+data StackVal = IVal IVal4,5
+data StackVal = IVal Integer | BVal BVal4,5
+data StackVal = IVal Integer | BVal Bool | Void Void4,5
+data StackExp StackExp7,8
+data StackExp = PushI PushI7,8
+              | PushB PushB8,9
+              | AddAdd9,10
+              | MulMul10,11
+              | AndAnd11,12
+              | OrOr12,13
+type Stack Stack15,16
+type Program Program16,17
+stackVM stackVM20,21
+stackVM stackVM21,22
+errType errType23,24
+errType errType24,25
+errUnderflow errUnderflow26,27
+errUnderflow errUnderflow27,28
+execute execute30,31
+execute execute31,32
+test test57,58
