@@ -69,3 +69,69 @@
   (if (good-enough? guess (cube-root-improve-guess guess x) x)
       guess
       (cube-root-iter (cube-root-improve-guess guess x) x)))
+
+(define (A x y)
+  (cond ((= y 0) 0)
+        (( = x 0) (* 2 y))
+        (( = y 1) 2)
+        (else (A (- x 1) (A x (- y 1))))))
+
+(A 1 10)
+(A 2 4)
+(A 3 3)
+
+(define (f n)
+  (if (< n 3)
+      n
+      (+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3))))))
+
+(f 19)
+
+(define (f2 n)
+  (if (< n 3)
+      n
+      (f-iter 2 1 0 (- n 2))))
+
+(define (f-iter n1 n2 n3 i)
+  (if (> i 0)
+      (f-iter (+ n1 (* 2 n2) (* 3 n3)) n1 n2 (- i 1))
+      n1))
+(f2 19)
+
+(define (pascal row col)
+  (cond ((= row 0) 1)
+        ((or (= col 0) (= col row)) 1)
+        (else (+ (pascal (- row 1) (- col 1)) (pascal (- row 1) col)))))
+(pascal 4 3)
+
+(define (cube x) (* x x))
+(define (p x) (- (* 3 x) (* 4 (cube x))))
+(define (sine angle)
+  (if (not (> (abs angle) 0.1))
+      angle
+      (p (sine (/ angle 3.0)))))
+(sine 12.15)
+(p (sine 4.05))
+(p (p (sine 1.35)))
+(p (p (p (sine .45))))
+(p (p (p (p (sine .15)))))
+(p (p (p (p (p .05)))))
+
+(define (fast-expt b n)
+  (cond ((= n 0)
+         1)
+         ((even? n)
+          (square (fast-expt b (/ n 2))))
+          (else (* b (fast-expt b (- n 1))))))
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(fast-expt 2 8)
+
+(define (fast-expt-iter b n a)
+  (cond ((= n 0) 1)
+        ((even? n) (fast-expt-iter (square b) (/ n 2) a))
+        (else (fast-expt b (- n 1) a))))
+   
+    
+
