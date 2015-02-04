@@ -325,3 +325,25 @@
 (((double (double double)) inc) 5)
 
 ((double inc) 1)
+
+(define (compose f g)
+  (lambda (x) (f (g x))))
+((compose square inc) 6)
+
+(define (repeated f n)
+  (if (> n 1)
+      (compose f (repeated f (- n 1)))
+      f))
+((repeated square 2) 5)
+
+(define (deriv f)
+  (let ((dx 0.00001))
+    (lambda (x) (/ (- (f (+ x dx)) (f x)) dx))))
+((deriv (lambda (x) (* x x x))) 4)
+
+(average 2 3)
+
+(define (smooth f)
+  (let ((dx 0.0001))
+    (lambda (x) (/ (+ (f (- x dx)) (f x) (f (+ x dx))) 3.0))))
+
