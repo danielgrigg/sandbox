@@ -1,5 +1,0 @@
- # run in foreground
- postgres -D /tmp/foobar
-
-# run as daemon
- pg_ctl -D /tmp/foobar start|status|stop
